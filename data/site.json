@@ -87,23 +87,23 @@
    },
    {
     "image": "assets/img/hero/kat.jpg",
-    "alt": "Kat likt haar neus bij een lepel voer",
+    "alt": "Rode kat rekt zich uit op tafel",
     "label": "kat",
-    "alt_en": "Cat licking its nose beside a spoon of food",
+    "alt_en": "Ginger cat stretching out on a table",
     "label_en": "cat"
    },
    {
     "image": "assets/img/hero/hond.jpg",
-    "alt": "Hond met knuffel op de bank",
+    "alt": "Witte hond rent door het gras",
     "label": "hond",
-    "alt_en": "Dog with a cuddly toy on the sofa",
+    "alt_en": "White dog running through the grass",
     "label_en": "dog"
    },
    {
     "image": "assets/img/hero/konijn.jpg",
-    "alt": "Jong konijn in twee handen",
+    "alt": "Jong konijn tussen de paardenbloemen",
     "label": "konijn",
-    "alt_en": "Young rabbit held in two hands",
+    "alt_en": "Young rabbit among the dandelions",
     "label_en": "rabbit"
    },
    {
