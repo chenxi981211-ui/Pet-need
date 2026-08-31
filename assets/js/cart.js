@@ -9,7 +9,8 @@
 
   var KEY = "petneeds.cart.v1";
   var WA_NUMBER = "31610837512";
-  var BASE = document.body.getAttribute("data-base") || "";
+  var BASE = document.body.getAttribute("data-base") || "";           // root, voor afbeeldingen
+  var LINK = document.body.getAttribute("data-link-base") || BASE;    // taalmap, voor paginalinks
   var I18N = window.PN_I18N || {};
 
   function s(key, vars) {
@@ -150,9 +151,9 @@
       : p_ask();
     return '' +
       '<li class="cart-line" data-line="' + item.sku + '">' +
-        '<a class="cart-line__media" href="' + BASE + item.url + '">' + img + '</a>' +
+        '<a class="cart-line__media" href="' + LINK + item.url + '">' + img + '</a>' +
         '<div class="cart-line__body">' +
-          '<a class="cart-line__name" href="' + BASE + item.url + '">' + item.name + '</a>' +
+          '<a class="cart-line__name" href="' + LINK + item.url + '">' + item.name + '</a>' +
           '<div class="cart-line__row">' +
             '<div class="qty qty--sm">' +
               '<button type="button" class="qty__btn" data-line-minus aria-label="' + s("qty_less") + '">&minus;</button>' +
@@ -183,7 +184,7 @@
           '<div class="cart__empty">' +
             '<p><strong>' + s("empty_title") + '</strong></p>' +
             '<p class="muted">' + s("empty_body") + '</p>' +
-            '<a class="btn btn--outline btn--sm" href="' + BASE + 'assortiment.html">' + s("empty_cta") + '</a>' +
+            '<a class="btn btn--outline btn--sm" href="' + LINK + 'assortiment.html">' + s("empty_cta") + '</a>' +
           '</div>';
       } else {
         listHost.innerHTML = '<ul class="cart-lines">' + state.map(lineMarkup).join("") + '</ul>';

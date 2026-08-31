@@ -87,8 +87,13 @@ def out_path(lang, rel):
 
 
 def lang_base(lang, rel):
-    """Relatief pad terug naar de site-root vanaf de gegenereerde pagina."""
+    """Relatief pad terug naar de site-root vanaf de gegenereerde pagina (voor assets)."""
     return "../" * out_path(lang, rel).count("/")
+
+
+def link_base(lang, rel):
+    """Basis voor links naar andere pagina's — blijft binnen dezelfde taal."""
+    return lang_base(lang, rel) + ("" if lang == "nl" else "en/")
 
 
 # --- taalgevoelige data-accessors ----------------------------------------
@@ -173,9 +178,10 @@ def lang_switch(lang, rel, base, other_rel=None):
 
 
 def header(lang, rel, base, other_rel=None):
+    lbase = link_base(lang, rel)
     links = "".join(
-        '<li><a class="nav__link" href="{b}{href}"{cur}>{label}</a></li>'.format(
-            b=base, href=href, label=t(lang, key),
+        '<li><a class="nav__link" href="{L}{href}"{cur}>{label}</a></li>'.format(
+            L=lbase, href=href, label=t(lang, key),
             cur=' aria-current="page"' if href == rel else "")
         for href, key in NAV
     )
@@ -189,19 +195,19 @@ def header(lang, rel, base, other_rel=None):
 </div>
 <header class="site-header">
   <div class="wrap header__inner">
-    <a class="brand" href="{b}index.html">
+    <a class="brand" href="{L}index.html">
       <span class="brand__mark">{logo}</span>
       <span>Pet Needs<small>{sub}</small></span>
     </a>
     <nav class="nav" data-nav aria-label="{menu_label}">
       <ul class="nav__list">{links}
-        <li class="nav__item--mobile"><a class="nav__link" href="{b}bestellen.html">{order_mobile}</a></li>
+        <li class="nav__item--mobile"><a class="nav__link" href="{L}bestellen.html">{order_mobile}</a></li>
         <li class="nav__item--lang">{lang_switch}</li>
       </ul>
     </nav>
     <div class="header__actions">
       {lang_switch}
-      <a class="btn btn--primary btn--sm hide-sm" href="{b}bestellen.html">{bag} {order}</a>
+      <a class="btn btn--primary btn--sm hide-sm" href="{L}bestellen.html">{bag} {order}</a>
       <button class="icon-btn cart-btn" data-cart-open aria-label="{cart_open}">
         {bag}<span class="cart-btn__count" data-cart-count hidden>0</span>
       </button>
@@ -213,7 +219,7 @@ def header(lang, rel, base, other_rel=None):
         skip=t(lang, "skip"), truck=icon("truck"), clock=icon("clock"),
         delivery=t(lang, "topbar_delivery", days=e(site_text(lang, "delivery_days"))),
         advice=t(lang, "topbar_advice"), wa=wa_link(t(lang, "wa_question")),
-        phone=e(SITE["whatsapp_display"]), b=base, logo=icon("logo"),
+        phone=e(SITE["whatsapp_display"]), b=base, L=lbase, logo=icon("logo"),
         sub=t(lang, "brand_sub"), menu_label=t(lang, "nav_home"), links=links,
         order_mobile=t(lang, "nav_order_mobile"), lang_switch=lang_switch(lang, rel, base, other_rel),
         bag=icon("bag"), order=t(lang, "btn_order"), cart_open=t(lang, "cart_open"),
@@ -221,22 +227,22 @@ def header(lang, rel, base, other_rel=None):
     )
 
 
-def footer(lang, base):
+def footer(lang, base, lbase):
     cat_links = "".join(
-        '<li><a href="{b}categorie/{s}.html">{n}</a></li>'.format(
-            b=base, s=c["slug"], n=e(cat_name(c, lang)))
+        '<li><a href="{L}categorie/{s}.html">{n}</a></li>'.format(
+            L=lbase, s=c["slug"], n=e(cat_name(c, lang)))
         for c in CATS[:7]
     )
     hours = "".join("<li><span>{d}</span><span>{v}</span></li>".format(d=e(d), v=e(v))
                     for d, v in hours_rows(lang))
-    styleguide = ('<li><a href="{b}styleguide.html">{label}</a></li>'.format(
-        b=base, label=t(lang, "footer_styleguide")) if lang == "nl" else "")
+    styleguide = ('<li><a href="{L}styleguide.html">{label}</a></li>'.format(
+        L=lbase, label=t(lang, "footer_styleguide")) if lang == "nl" else "")
     return """
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer__grid">
       <div>
-        <a class="brand" href="{b}index.html">
+        <a class="brand" href="{L}index.html">
           <span class="brand__mark">{logo}</span>
           <span>Pet Needs<small>{sub}</small></span>
         </a>
@@ -246,16 +252,16 @@ def footer(lang, base):
       <div>
         <h4>{col_shop}</h4>
         <ul class="footer__list">{cat_links}
-          <li><a href="{b}assortiment.html">{all_products}</a></li>
+          <li><a href="{L}assortiment.html">{all_products}</a></li>
         </ul>
       </div>
       <div>
         <h4>{col_store}</h4>
         <ul class="footer__list">
-          <li><a href="{b}over-ons.html">{about}</a></li>
-          <li><a href="{b}dierenarts.html">{vet}</a></li>
-          <li><a href="{b}contact.html">{hours_route}</a></li>
-          <li><a href="{b}privacy.html">{privacy}</a></li>
+          <li><a href="{L}over-ons.html">{about}</a></li>
+          <li><a href="{L}dierenarts.html">{vet}</a></li>
+          <li><a href="{L}contact.html">{hours_route}</a></li>
+          <li><a href="{L}privacy.html">{privacy}</a></li>
           {styleguide}
         </ul>
       </div>
@@ -272,7 +278,7 @@ def footer(lang, base):
   </div>
 </footer>
 """.format(
-        b=base, logo=icon("logo"), sub=t(lang, "brand_sub_footer", since=SITE["since"]),
+        b=base, L=lbase, logo=icon("logo"), sub=t(lang, "brand_sub_footer", since=SITE["since"]),
         tagline=t(lang, "footer_tagline"), wa=wa_link(t(lang, "wa_question")),
         whatsapp=icon("whatsapp"), phone=e(SITE["whatsapp_display"]),
         col_shop=t(lang, "footer_shop"), cat_links=cat_links,
@@ -286,7 +292,7 @@ def footer(lang, base):
     )
 
 
-def cart_drawer(lang, base):
+def cart_drawer(lang, base, lbase):
     return """
 <div class="cart-backdrop" data-cart-backdrop hidden></div>
 <aside class="cart" data-cart-panel aria-label="{title}" aria-hidden="true" hidden>
@@ -298,23 +304,24 @@ def cart_drawer(lang, base):
   <div class="cart__foot" data-cart-foot hidden>
     <div class="cart__total"><span>{subtotal}</span><strong data-cart-total>€ 0,00</strong></div>
     <p class="cart__note">{note}</p>
-    <a class="btn btn--primary btn--block" href="{b}bestellen.html">{checkout} {arrow}</a>
+    <a class="btn btn--primary btn--block" href="{L}bestellen.html">{checkout} {arrow}</a>
     <button class="cart__clear" data-cart-clear>{clear}</button>
   </div>
 </aside>
 <div class="toast" data-toast hidden role="status" aria-live="polite"></div>
 """.format(
         title=t(lang, "cart_title"), close=t(lang, "cart_close"), close_icon=icon("close"),
-        subtotal=t(lang, "cart_subtotal"), note=t(lang, "cart_note"), b=base,
+        subtotal=t(lang, "cart_subtotal"), note=t(lang, "cart_note"), L=lbase,
         checkout=t(lang, "cart_checkout"), arrow=icon("arrow"), clear=t(lang, "cart_clear"),
     )
 
 
-def js_strings(lang, base):
+def js_strings(lang, base, lbase):
     payload = {k[3:]: v for k, v in TEXT[lang].items() if k.startswith("js_")}
     payload["base"] = base
     payload["lang"] = HTML_LANG[lang]
-    payload["shopUrl"] = base + "assortiment.html"
+    payload["shopUrl"] = lbase + "assortiment.html"
+    payload["linkBase"] = lbase
     return json.dumps(payload, ensure_ascii=False)
 
 
@@ -324,6 +331,7 @@ FONTS = ("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700"
 
 def layout(lang, rel, title, description, body, extra_head="", other_rel=None):
     base = lang_base(lang, rel)
+    lbase = link_base(lang, rel)
     alternates = "" if other_rel else "".join(
         '<link rel="alternate" hreflang="{code}" href="{url}">'.format(
             code=HTML_LANG[code],
@@ -348,7 +356,7 @@ def layout(lang, rel, title, description, body, extra_head="", other_rel=None):
 <link rel="stylesheet" href="{b}assets/css/site.css?v={v}">
 {extra_head}
 </head>
-<body data-base="{b}" data-lang="{htmllang}">
+<body data-base="{b}" data-link-base="{L}" data-lang="{htmllang}">
 {header}
 <main id="main">
 {body}
@@ -362,9 +370,9 @@ def layout(lang, rel, title, description, body, extra_head="", other_rel=None):
 </html>
 """.format(
         htmllang=HTML_LANG[lang], title=e(title), desc=e(description), alternates=alternates,
-        fonts=FONTS, b=base, v=VERSION, extra_head=extra_head,
-        header=header(lang, rel, base, other_rel), body=body, footer=footer(lang, base),
-        cart=cart_drawer(lang, base), i18n=js_strings(lang, base),
+        fonts=FONTS, b=base, L=lbase, v=VERSION, extra_head=extra_head,
+        header=header(lang, rel, base, other_rel), body=body, footer=footer(lang, base, lbase),
+        cart=cart_drawer(lang, base, lbase), i18n=js_strings(lang, base, lbase),
     )
 
 
@@ -379,7 +387,8 @@ def cart_data(p):
         img=e(p["image"]), slug=p["slug"])
 
 
-def product_card(p, lang, base=""):
+def product_card(p, lang, base="", lbase=None):
+    lbase = base if lbase is None else lbase
     cat = CAT_BY_SLUG[p["category"]]
     media = ('<img src="{b}{img}" alt="{alt}" loading="lazy" width="600" height="600">'.format(
         b=base, img=p["image"], alt=e(p["name"]))
@@ -393,19 +402,20 @@ def product_card(p, lang, base=""):
   <div class="product__media">{media}</div>
   <div class="product__body">
     <span class="product__cat">{catname}</span>
-    <h3 class="product__title"><a href="{b}product/{slug}.html">{name}</a></h3>
+    <h3 class="product__title"><a href="{L}product/{slug}.html">{name}</a></h3>
     <div class="product__foot">{price}
       <button class="product__add" type="button" {data} aria-label="{aria}">{bag}<span>{add}</span></button>
     </div>
   </div>
 </article>""".format(
         cat=cat["slug"], pet=" ".join(pets_of(cat)), search=e(search), media=media,
-        catname=e(cat_name(cat, lang)), b=base, slug=p["slug"], name=e(p["name"]), price=price,
+        catname=e(cat_name(cat, lang)), L=lbase, b=base, slug=p["slug"], name=e(p["name"]), price=price,
         data=cart_data(p), bag=icon("bag"), add=t(lang, "add_short"),
         aria=t(lang, "add_to_cart_label", name=e(p["name"])))
 
 
-def category_card(c, lang, base=""):
+def category_card(c, lang, base="", lbase=None):
+    lbase = base if lbase is None else lbase
     media = ('<img src="{b}{img}" alt="{alt}" loading="lazy" width="600" height="450">'.format(
         b=base, img=c["image"], alt=e(cat_name(c, lang)))
         if c["image"] else "<span>{}</span>".format(icon("paw")))
@@ -413,15 +423,16 @@ def category_card(c, lang, base=""):
 <article class="card reveal">
   <div class="card__media {tint}">{media}</div>
   <div class="card__body">
-    <h3 class="card__title"><a class="card__link" href="{b}categorie/{slug}.html">{name}</a></h3>
+    <h3 class="card__title"><a class="card__link" href="{L}categorie/{slug}.html">{name}</a></h3>
     <p class="card__meta">{count}</p>
   </div>
 </article>""".format(
-        tint=c["tint"], media=media, b=base, slug=c["slug"], name=e(cat_name(c, lang)),
+        tint=c["tint"], media=media, b=base, L=lbase, slug=c["slug"], name=e(cat_name(c, lang)),
         count=plural(lang, c["count"]))
 
 
-def cta_band(lang, base=""):
+def cta_band(lang, base="", lbase=None):
+    lbase = base if lbase is None else lbase
     return """
 <section class="section">
   <div class="wrap">
@@ -431,14 +442,14 @@ def cta_band(lang, base=""):
       <p>{body}</p>
       <div class="cta__actions">
         <a class="btn btn--primary btn--lg" href="{wa}">{whatsapp} {app}</a>
-        <a class="btn btn--light btn--lg" href="{b}contact.html">{pin} {visit}</a>
+        <a class="btn btn--light btn--lg" href="{L}contact.html">{pin} {visit}</a>
       </div>
     </div>
   </div>
 </section>""".format(
         paw=icon("paw"), eyebrow=t(lang, "cta_eyebrow"), title=t(lang, "cta_title"),
         body=t(lang, "cta_body"), wa=wa_link(t(lang, "wa_pet_question")), whatsapp=icon("whatsapp"),
-        app=t(lang, "cta_app", phone=e(SITE["whatsapp_display"])), b=base, pin=icon("pin"),
+        app=t(lang, "cta_app", phone=e(SITE["whatsapp_display"])), L=lbase, pin=icon("pin"),
         visit=t(lang, "cta_visit"))
 
 
@@ -497,11 +508,12 @@ def hero_dots(lang):
     return "".join(out)
 
 
-def crumbs(lang, base, trail):
-    parts = ['<a href="{b}index.html">{home}</a>'.format(b=base, home=t(lang, "crumb_home"))]
+def crumbs(lang, base, trail, lbase=None):
+    lbase = base if lbase is None else lbase
+    parts = ['<a href="{L}index.html">{home}</a>'.format(L=lbase, home=t(lang, "crumb_home"))]
     for label, href in trail:
         parts.append("<span>/</span>")
-        parts.append('<a href="{b}{href}">{label}</a>'.format(b=base, href=href, label=label)
+        parts.append('<a href="{L}{href}">{label}</a>'.format(L=lbase, href=href, label=label)
                      if href else "<span>%s</span>" % label)
     return '<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb">%s</nav></div>' % " ".join(parts)
 
@@ -512,16 +524,17 @@ def crumbs(lang, base, trail):
 def page_home(lang):
     rel = "index.html"
     base = lang_base(lang, rel)
+    lbase = link_base(lang, rel)
     days = site_text(lang, "delivery_days")
     area = delivery_area(lang)
 
     pets = "".join(
-        """<a class="pet reveal" href="{b}assortiment.html?dier={slug}">
+        """<a class="pet reveal" href="{L}assortiment.html?dier={slug}">
         <span class="pet__ring {tint}"><img src="{b}{img}" alt="{label}" loading="lazy" width="300" height="300"></span>
         <span class="pet__label">{label}</span>
         <span class="pet__count">{count}</span>
       </a>""".format(
-            b=base, slug=p["slug"], tint=p.get("tint", "tint-mint"), img=e(p["image"]),
+            b=base, L=lbase, slug=p["slug"], tint=p.get("tint", "tint-mint"), img=e(p["image"]),
             label=e(pet_label(p["slug"], lang)), count=plural(lang, count_for_pet(p["slug"])))
         for p in PETS)
 
@@ -531,8 +544,8 @@ def page_home(lang):
         if pick and pick["slug"] not in used:
             featured.append(pick)
             used.add(pick["slug"])
-    featured_html = "".join(product_card(p, lang, base) for p in featured[:8])
-    cats_html = "".join(category_card(c, lang, base) for c in CATS[:8])
+    featured_html = "".join(product_card(p, lang, base, lbase) for p in featured[:8])
+    cats_html = "".join(category_card(c, lang, base, lbase) for c in CATS[:8])
 
     strip_items = [t(lang, "strip_1", since=SITE["since"]), t(lang, "strip_2"),
                    t(lang, "strip_3"), t(lang, "strip_4"), t(lang, "strip_5")]
@@ -549,7 +562,7 @@ def page_home(lang):
           <h1>{hero_title}</h1>
           <p class="hero__lede">{hero_lede}</p>
           <div class="hero__actions">
-            <a class="btn btn--primary btn--lg" href="{b}assortiment.html">{cta_shop} {arrow}</a>
+            <a class="btn btn--primary btn--lg" href="{L}assortiment.html">{cta_shop} {arrow}</a>
             <a class="btn btn--light btn--lg" href="{wa}">{whatsapp} {cta_app}</a>
           </div>
           <ul class="hero__trust">
@@ -598,7 +611,7 @@ def page_home(lang):
       <p>{cats_lede}</p>
     </div>
     <div class="cards">{cats}</div>
-    <p class="mt-lg"><a class="btn btn--outline" href="{b}assortiment.html">{cats_cta} {arrow}</a></p>
+    <p class="mt-lg"><a class="btn btn--outline" href="{L}assortiment.html">{cats_cta} {arrow}</a></p>
   </div>
 </section>
 
@@ -652,7 +665,7 @@ def page_home(lang):
       <p>{popular_lede}</p>
     </div>
     <div class="products">{featured}</div>
-    <p class="center mt-lg"><a class="btn btn--outline" href="{b}assortiment.html">{popular_cta} {arrow}</a></p>
+    <p class="center mt-lg"><a class="btn btn--outline" href="{L}assortiment.html">{popular_cta} {arrow}</a></p>
   </div>
 </section>
 
@@ -671,7 +684,7 @@ def page_home(lang):
         <div class="feature"><span class="feature__icon">{clock}</span><div><h3>{vet_hours_title}</h3><p>{vet_hours}</p></div></div>
         <div class="feature"><span class="feature__icon">{check}</span><div><h3>{vet_free_title}</h3><p>{vet_free_body}</p></div></div>
       </div>
-      <a class="btn btn--light" href="{b}dierenarts.html">{vet_cta} {arrow}</a>
+      <a class="btn btn--light" href="{L}dierenarts.html">{vet_cta} {arrow}</a>
     </div>
   </div>
 </section>
@@ -688,7 +701,7 @@ def page_home(lang):
       <div class="step reveal"><div class="step__num"></div><h3>{s2t}</h3><p>{s2b}</p></div>
       <div class="step reveal"><div class="step__num"></div><h3>{s3t}</h3><p>{s3b}</p></div>
     </div>
-    <p class="center mt-lg"><a class="btn btn--primary" href="{b}assortiment.html">{steps_cta} {arrow}</a></p>
+    <p class="center mt-lg"><a class="btn btn--primary" href="{L}assortiment.html">{steps_cta} {arrow}</a></p>
   </div>
 </section>
 
@@ -705,7 +718,7 @@ def page_home(lang):
 </section>
 {cta}
 """.format(
-        b=base, paw=icon("paw"), arrow=icon("arrow"), whatsapp=icon("whatsapp"),
+        b=base, paw=icon("paw"), arrow=icon("arrow"), whatsapp=icon("whatsapp"), L=lbase,
         check=icon("check"), heart=icon("heart"), stet=icon("stethoscope"), leaf=icon("leaf"),
         quote=icon("quote"), clock=icon("clock"), truck=icon("truck"), pin=icon("pin"),
         hero_eyebrow=t(lang, "hero_eyebrow", since=SITE["since"]), hero_title=t(lang, "hero_title"),
@@ -765,14 +778,14 @@ def page_home(lang):
         <p class="lede" style="margin-bottom:.5rem">{street}<br>{zip} {city}</p>
         <p class="muted" style="font-size:var(--step--1)">{parking}</p>
         <div class="hero__actions" style="margin-top:1rem">
-          <a class="btn btn--forest" href="{b}contact.html">{visit_cta} {arrow}</a>
+          <a class="btn btn--forest" href="{L}contact.html">{visit_cta} {arrow}</a>
           <a class="btn btn--outline" href="{maps}" target="_blank" rel="noopener">{maps_label}</a>
         </div>
       </div>
     </div>
   </div>
 </section>""".format(
-            b=base, shop_wide=e(IMG["shop_wide"]), visit_alt=t(lang, "visit_alt"),
+            b=base, L=lbase, shop_wide=e(IMG["shop_wide"]), visit_alt=t(lang, "visit_alt"),
             pin=icon("pin"), paw=icon("paw"), store=icon("store"), arrow=icon("arrow"),
             sticker_since=t(lang, "hero_sticker_since", since=SITE["since"]),
             visit_eyebrow=t(lang, "visit_eyebrow"), visit_title=t(lang, "visit_title"),
@@ -786,7 +799,7 @@ def page_home(lang):
                           for d, v in hours_rows(lang))),
         shop_cat=shop_cat_section(lang, base), since=SITE["since"], count=len(PRODUCTS),
         stat1=t(lang, "stat_1"), stat2=t(lang, "stat_2"), stat3=t(lang, "stat_3"),
-        stat4=t(lang, "stat_4"), cta=cta_band(lang, base))
+        stat4=t(lang, "stat_4"), cta=cta_band(lang, base, lbase))
     return write(out_path(lang, rel), layout(
         lang, rel, t(lang, "meta_home_title"), site_text(lang, "description"), body))
 
@@ -794,12 +807,13 @@ def page_home(lang):
 def page_catalog(lang):
     rel = "assortiment.html"
     base = lang_base(lang, rel)
+    lbase = link_base(lang, rel)
     chips = ['<button class="chip" data-filter="all" aria-pressed="true">%s</button>'
              % t(lang, "shop_all")]
     for c in CATS:
         chips.append('<button class="chip" data-filter="{s}" aria-pressed="false">{n}</button>'.format(
             s=c["slug"], n=e(cat_name(c, lang))))
-    grid = "".join(product_card(p, lang, base) for p in PRODUCTS)
+    grid = "".join(product_card(p, lang, base, lbase) for p in PRODUCTS)
     body = """
 {crumbs}
 <section class="section" style="padding-top:1.5rem">
@@ -826,13 +840,13 @@ def page_catalog(lang):
 </section>
 {cta}
 """.format(
-        crumbs=crumbs(lang, base, [(t(lang, "nav_shop"), None)]), paw=icon("paw"),
+        crumbs=crumbs(lang, base, lbase=lbase, trail=[(t(lang, "nav_shop"), None)]), paw=icon("paw"), L=lbase,
         count=plural(lang, len(PRODUCTS)), title=t(lang, "shop_title"), lede=t(lang, "shop_lede"),
         filter_label=t(lang, "shop_filter_label"), chips="".join(chips), search=icon("search"),
         search_label=t(lang, "shop_search_label"), search_ph=t(lang, "shop_search_placeholder"),
         grid=grid, empty_title=t(lang, "shop_empty_title"), empty_lede=t(lang, "shop_empty_lede"),
         wa=wa_link(t(lang, "wa_missing_product")), whatsapp=icon("whatsapp"),
-        empty_cta=t(lang, "shop_empty_cta"), cta=cta_band(lang, base))
+        empty_cta=t(lang, "shop_empty_cta"), cta=cta_band(lang, base, lbase))
     return write(out_path(lang, rel), layout(
         lang, rel, t(lang, "meta_shop_title"), t(lang, "meta_shop_desc"), body))
 
@@ -840,8 +854,10 @@ def page_catalog(lang):
 def page_category(c, lang):
     rel = "categorie/%s.html" % c["slug"]
     base = lang_base(lang, rel)
+    lbase = link_base(lang, rel)
+    lbase = link_base(lang, rel)
     items = products_of(c["slug"])
-    grid = "".join(product_card(p, lang, base) for p in items)
+    grid = "".join(product_card(p, lang, base, lbase) for p in items)
     others = "".join('<a class="chip" href="{s}.html">{n}</a>'.format(
         s=o["slug"], n=e(cat_name(o, lang))) for o in CATS if o["slug"] != c["slug"])
     body = """
@@ -864,11 +880,11 @@ def page_category(c, lang):
 </section>
 {cta}
 """.format(
-        crumbs=crumbs(lang, base, [(t(lang, "nav_shop"), "assortiment.html"),
+        crumbs=crumbs(lang, base, lbase=lbase, trail=[(t(lang, "nav_shop"), "assortiment.html"),
                                    (e(cat_name(c, lang)), None)]),
-        paw=icon("paw"), count=plural(lang, len(items)), name=e(cat_name(c, lang)),
+        paw=icon("paw"), count=plural(lang, len(items)), name=e(cat_name(c, lang)), L=lbase,
         intro=e(cat_intro(c, lang)), grid=grid, others_title=t(lang, "cat_others_title"),
-        others=others, cta=cta_band(lang, base))
+        others=others, cta=cta_band(lang, base, lbase))
     return write(out_path(lang, rel), layout(
         lang, rel, "%s — Pet Needs Delft" % cat_name(c, lang), cat_intro(c, lang), body))
 
@@ -876,9 +892,11 @@ def page_category(c, lang):
 def page_product(p, lang):
     rel = "product/%s.html" % p["slug"]
     base = lang_base(lang, rel)
+    lbase = link_base(lang, rel)
+    lbase = link_base(lang, rel)
     c = CAT_BY_SLUG[p["category"]]
     related = [o for o in products_of(c["slug"]) if o["slug"] != p["slug"]][:4]
-    related_html = "".join(product_card(o, lang, base) for o in related)
+    related_html = "".join(product_card(o, lang, base, lbase) for o in related)
     media = ('<img src="{b}{img}" alt="{alt}" width="900" height="900">'.format(
         b=base, img=p["image"], alt=e(p["name"]))
         if p["image"] else '<span class="product__ph {tint}">{paw}</span>'.format(
@@ -924,7 +942,7 @@ def page_product(p, lang):
       </div>
       <div class="pdp__actions" style="margin-top:-.4rem">
         <a class="btn btn--outline btn--sm" href="{wa}">{whatsapp} {direct}</a>
-        <a class="btn btn--outline btn--sm" href="{b}contact.html">{store} {pickup}</a>
+        <a class="btn btn--outline btn--sm" href="{L}contact.html">{store} {pickup}</a>
       </div>
       <ul class="pdp__list">
         <li>{check} {b1}</li>
@@ -939,10 +957,10 @@ def page_product(p, lang):
 {cta}
 <script type="application/ld+json">{jsonld}</script>
 """.format(
-        crumbs=crumbs(lang, base, [(t(lang, "nav_shop"), "assortiment.html"),
+        crumbs=crumbs(lang, base, lbase=lbase, trail=[(t(lang, "nav_shop"), "assortiment.html"),
                                    (e(cat_name(c, lang)), "categorie/%s.html" % c["slug"]),
                                    (e(p["name"]), None)]),
-        media=media, catname=e(cat_name(c, lang)), name=e(p["name"]), price=e(price), desc=e(desc),
+        media=media, catname=e(cat_name(c, lang)), name=e(p["name"]), price=e(price), desc=e(desc), L=lbase,
         qty_less=t(lang, "pdp_qty_less"), minus=icon("minus"), qty_label=t(lang, "pdp_qty_label"),
         qty_more=t(lang, "pdp_qty_more"), plus=icon("plus"), data=cart_data(p), bag=icon("bag"),
         add=t(lang, "pdp_add"), wa=wa_link(order_text), whatsapp=icon("whatsapp"),
@@ -952,7 +970,7 @@ def page_product(p, lang):
              area=e(", ".join(SITE["delivery_area"]))),
         b2=t(lang, "pdp_bullet_2"), b3=t(lang, "pdp_bullet_3"),
         sku_note=t(lang, "pdp_sku", sku=e(p["sku"])), related_block=related_block,
-        cta=cta_band(lang, base), jsonld=jsonld)
+        cta=cta_band(lang, base, lbase), jsonld=jsonld)
     return write(out_path(lang, rel), layout(
         lang, rel, "%s — Pet Needs Delft" % p["name"],
         (prod_desc(p, lang) or t(lang, "meta_product_desc", name=p["name"]))[:155], body))
@@ -961,6 +979,7 @@ def page_product(p, lang):
 def page_about(lang):
     rel = "over-ons.html"
     base = lang_base(lang, rel)
+    lbase = link_base(lang, rel)
     body = """
 {crumbs}
 <section class="section" style="padding-top:1.5rem">
@@ -995,7 +1014,7 @@ def page_about(lang):
 {shop_cat}
 {cta}
 """.format(
-        crumbs=crumbs(lang, base, [(t(lang, "nav_about"), None)]), paw=icon("paw"),
+        crumbs=crumbs(lang, base, lbase=lbase, trail=[(t(lang, "nav_about"), None)]), paw=icon("paw"), L=lbase,
         eyebrow=t(lang, "about_eyebrow", since=SITE["since"]), title=t(lang, "about_title"),
         lede=t(lang, "about_lede", since=SITE["since"]), p1=t(lang, "about_p1"),
         p2=t(lang, "about_p2", licg=e(SITE["licg"])), b=base, shop_img=e(IMG["shop"]),
@@ -1007,7 +1026,7 @@ def page_about(lang):
         v3b=t(lang, "about_v3_body", days=e(site_text(lang, "delivery_days")),
               area=e(delivery_area(lang))),
         v4t=t(lang, "about_v4_title"), v4b=t(lang, "about_v4_body"),
-        shop_cat=shop_cat_section(lang, base), cta=cta_band(lang, base))
+        shop_cat=shop_cat_section(lang, base), cta=cta_band(lang, base, lbase))
     return write(out_path(lang, rel), layout(
         lang, rel, t(lang, "meta_about_title"), t(lang, "meta_about_desc"), body))
 
@@ -1015,6 +1034,7 @@ def page_about(lang):
 def page_vet(lang):
     rel = "dierenarts.html"
     base = lang_base(lang, rel)
+    lbase = link_base(lang, rel)
     body = """
 {crumbs}
 <section class="section" style="padding-top:1.5rem">
@@ -1044,7 +1064,7 @@ def page_vet(lang):
 </section>
 {cta}
 """.format(
-        crumbs=crumbs(lang, base, [(t(lang, "nav_vet"), None)]), stet=icon("stethoscope"),
+        crumbs=crumbs(lang, base, lbase=lbase, trail=[(t(lang, "nav_vet"), None)]), stet=icon("stethoscope"), L=lbase,
         eyebrow=t(lang, "vet_page_eyebrow"), title=t(lang, "vet_page_title"),
         lede=t(lang, "vet_page_lede"), p1=t(lang, "vet_page_p1"), p2=t(lang, "vet_page_p2"),
         wa=wa_link(t(lang, "wa_vet_question")), whatsapp=icon("whatsapp"),
@@ -1054,7 +1074,7 @@ def page_vet(lang):
         zip=e(SITE["address"]["zip"]), city=e(SITE["address"]["city"]), paw=icon("paw"),
         what=t(lang, "vet_what"), what_body=t(lang, "vet_what_body"), b=base,
         vet_img=e(IMG["vet"]), vet_alt=e(img_alt("vet_alt", lang)), sticker=t(lang, "vet_sticker"),
-        cta=cta_band(lang, base))
+        cta=cta_band(lang, base, lbase))
     return write(out_path(lang, rel), layout(
         lang, rel, t(lang, "meta_vet_title"),
         t(lang, "meta_vet_desc", hours=site_text(lang, "vet_hours")), body))
@@ -1063,6 +1083,7 @@ def page_vet(lang):
 def page_contact(lang):
     rel = "contact.html"
     base = lang_base(lang, rel)
+    lbase = link_base(lang, rel)
     hours = "".join("<li><span>{}</span><span>{}</span></li>".format(e(d), e(v))
                     for d, v in hours_rows(lang))
     body = """
@@ -1112,7 +1133,7 @@ def page_contact(lang):
   </div>
 </section>
 """.format(
-        crumbs=crumbs(lang, base, [(t(lang, "nav_contact"), None)]), pin=icon("pin"),
+        crumbs=crumbs(lang, base, lbase=lbase, trail=[(t(lang, "nav_contact"), None)]), pin=icon("pin"), L=lbase,
         title=t(lang, "contact_title"), lede=t(lang, "contact_lede"), clock=icon("clock"),
         hours_title=t(lang, "contact_hours"), hours=hours,
         address_title=t(lang, "contact_address"), street=e(SITE["address"]["street"]),
@@ -1137,6 +1158,7 @@ def page_contact(lang):
 def page_privacy(lang):
     rel = "privacy.html"
     base = lang_base(lang, rel)
+    lbase = link_base(lang, rel)
     body = """
 {crumbs}
 <section class="section" style="padding-top:1.5rem">
@@ -1149,7 +1171,7 @@ def page_privacy(lang):
   </div>
 </section>
 """.format(
-        crumbs=crumbs(lang, base, [(t(lang, "privacy_title"), None)]),
+        crumbs=crumbs(lang, base, lbase=lbase, trail=[(t(lang, "privacy_title"), None)]),
         title=t(lang, "privacy_title"), lede=t(lang, "privacy_lede"), p1=t(lang, "privacy_p1"),
         p2=t(lang, "privacy_p2", phone=e(SITE["whatsapp_display"])),
         p3=t(lang, "privacy_p3", street=e(SITE["address"]["street"]),
@@ -1161,6 +1183,7 @@ def page_privacy(lang):
 def page_checkout(lang):
     rel = "bestellen.html"
     base = lang_base(lang, rel)
+    lbase = link_base(lang, rel)
     days = site_text(lang, "delivery_days")
     area = delivery_area(lang)
     body = """
@@ -1182,7 +1205,7 @@ def page_checkout(lang):
           <span class="checkout__empty-icon">{bag}</span>
           <h3>{empty_title}</h3>
           <p class="lede">{empty_lede}</p>
-          <a class="btn btn--primary" href="{b}assortiment.html">{empty_cta} {arrow}</a>
+          <a class="btn btn--primary" href="{L}assortiment.html">{empty_cta} {arrow}</a>
         </div>
 
         <form class="checkout__form" data-checkout-form novalidate>
@@ -1292,7 +1315,7 @@ def page_checkout(lang):
   </div>
 </section>
 """.format(
-        crumbs=crumbs(lang, base, [(t(lang, "btn_order"), None)]), bag=icon("bag"),
+        crumbs=crumbs(lang, base, lbase=lbase, trail=[(t(lang, "btn_order"), None)]), bag=icon("bag"), L=lbase,
         eyebrow=t(lang, "checkout_eyebrow"), title=t(lang, "checkout_title"),
         lede=t(lang, "checkout_lede"), products=t(lang, "checkout_products"),
         empty_title=t(lang, "checkout_empty_title"), empty_lede=t(lang, "checkout_empty_lede"),
@@ -1331,6 +1354,7 @@ def swatch(var, name, hexv):
 def page_styleguide():
     lang, rel = "nl", "styleguide.html"
     base = lang_base(lang, rel)
+    lbase = link_base(lang, rel)
     colors = "".join([
         swatch("forest", "Forest", "#14523a"), swatch("forest-deep", "Forest deep", "#0e3b29"),
         swatch("forest-soft", "Forest soft", "#dfeee4"), swatch("carrot", "Carrot", "#ff6f2c"),
@@ -1515,7 +1539,7 @@ def page_styleguide():
   </div>
 </section>
 """.format(
-        crumbs=crumbs(lang, base, [("Stijlgids", None)]), paw=icon("paw"), colors=colors,
+        crumbs=crumbs(lang, base, lbase=lbase, trail=[("Stijlgids", None)]), paw=icon("paw"), colors=colors, L=lbase,
         icons=icons_html, whatsapp=icon("whatsapp"), heart=icon("heart"), stet=icon("stethoscope"),
         leaf=icon("leaf"), search=icon("search"), clock=icon("clock"), quote=icon("quote"),
         demo1=product_card(demo[0], lang), demo2=product_card(demo[1], lang),

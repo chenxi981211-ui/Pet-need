@@ -231,6 +231,8 @@ TEXT = {
         "js_order_pickup": "Ophalen in de winkel",
         "js_order_note": "Opmerking",
         "js_ask_price": "prijs op aanvraag",
+        "js_product_one": "product",
+        "js_product_many": "producten",
 
         # --- about / vet / contact / privacy -------------------------------
         "about_eyebrow": "Sinds {since}",
@@ -517,6 +519,8 @@ TEXT = {
         "js_order_pickup": "Collection in the shop",
         "js_order_note": "Note",
         "js_ask_price": "price on request",
+        "js_product_one": "product",
+        "js_product_many": "products",
 
         # --- about / vet / contact / privacy -------------------------------
         "about_eyebrow": "Since {since}",

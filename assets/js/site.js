@@ -75,7 +75,12 @@
         el.classList.toggle("hide", !visible);
         if (visible) shown++;
       });
-      if (counter) counter.textContent = shown + (shown === 1 ? " product" : " producten");
+      if (counter) {
+        var words = window.PN_I18N || {};
+        counter.textContent = shown + " " + (shown === 1
+          ? (words.product_one || "product")
+          : (words.product_many || "producten"));
+      }
       if (empty) empty.classList.toggle("hide", shown !== 0);
     }
 
