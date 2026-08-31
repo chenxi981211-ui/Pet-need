@@ -69,7 +69,8 @@
    "advice_alt_en": "Young cat looking into the camera",
    "vet_alt_en": "Rabbit in the grass — a check-up with our vet",
    "cat_alt_en": "The Pet Needs shop cat among the hay",
-   "cat2_alt_en": "The Pet Needs shop cat stretched out on a stack of boxes"
+   "cat2_alt_en": "The Pet Needs shop cat stretched out on a stack of boxes",
+   "shop_wide": "assets/img/site/winkel-breed.jpg"
   },
   "shop_cat": {
    "title": "Onze winkelkat",
@@ -77,6 +78,20 @@
    "sticker": "Chef de hooi"
   },
   "hero_slides": [
+   {
+    "image": "assets/img/hero/kat.jpg",
+    "alt": "Kat likt haar neus bij een lepel voer",
+    "label": "kat",
+    "alt_en": "Cat licking its nose beside a spoon of food",
+    "label_en": "cat"
+   },
+   {
+    "image": "assets/img/hero/hond.jpg",
+    "alt": "Hond met knuffel op de bank",
+    "label": "hond",
+    "alt_en": "Dog with a cuddly toy on the sofa",
+    "label_en": "dog"
+   },
    {
     "image": "assets/img/hero/konijn.jpg",
     "alt": "Jong konijn in twee handen",
@@ -92,18 +107,11 @@
     "label_en": "guinea pig"
    },
    {
-    "image": "assets/img/hero/hond.jpg",
-    "alt": "Hond met knuffel op de bank",
-    "label": "hond",
-    "alt_en": "Dog with a cuddly toy on the sofa",
-    "label_en": "dog"
-   },
-   {
-    "image": "assets/img/hero/kat.jpg",
-    "alt": "Kat likt haar neus bij een lepel voer",
-    "label": "kat",
-    "alt_en": "Cat licking its nose beside a spoon of food",
-    "label_en": "cat"
+    "image": "assets/img/hero/winkel.jpg",
+    "alt": "De winkel van Pet Needs aan de Choorstraat 49 in Delft",
+    "label": "onze winkel",
+    "alt_en": "The Pet Needs shop on Choorstraat 49 in Delft",
+    "label_en": "our shop"
    }
   ]
  },

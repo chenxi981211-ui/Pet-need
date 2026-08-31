@@ -564,6 +564,7 @@ def page_home(lang):
           <div class="hero__photo" data-hero-slider>
             {slides}
             <div class="hero__dots" role="group">{dots}</div>
+            <div class="hero__progress" data-hero-progress></div>
           </div>
           <div class="hero__card">
             <span class="dot">{paw}</span>
@@ -588,6 +589,7 @@ def page_home(lang):
   </div>
 </section>
 
+{storefront_block}
 <section class="section section--sand">
   <div class="wrap">
     <div class="section-head">
@@ -690,24 +692,6 @@ def page_home(lang):
   </div>
 </section>
 
-<section class="section section--sand">
-  <div class="wrap split">
-    <div class="reveal">
-      <div class="frame frame--4x3">
-        <img src="{b}{shop_img}" alt="{visit_alt}" loading="lazy" width="1400" height="1050">
-      </div>
-    </div>
-    <div>
-      <span class="eyebrow eyebrow--carrot">{pin} {visit_eyebrow}</span>
-      <h2>{visit_title}</h2>
-      <p>{visit_body}</p>
-      <ul class="hours" style="max-width:24rem">{hours}</ul>
-      <div class="hero__actions">
-        <a class="btn btn--forest" href="{b}contact.html">{visit_cta} {arrow}</a>
-      </div>
-    </div>
-  </div>
-</section>
 {shop_cat}
 <section class="section section--tight">
   <div class="wrap">
@@ -758,11 +742,48 @@ def page_home(lang):
         s1t=t(lang, "step1_title"), s1b=t(lang, "step1_body"), s2t=t(lang, "step2_title"),
         s2b=t(lang, "step2_body"), s3t=t(lang, "step3_title"),
         s3b=t(lang, "step3_body", days=e(days), area=e(area)), steps_cta=t(lang, "steps_cta"),
-        shop_img=e(IMG["shop"]), visit_alt=t(lang, "visit_alt"),
-        visit_eyebrow=t(lang, "visit_eyebrow"), visit_title=t(lang, "visit_title"),
-        visit_body=t(lang, "visit_body", since=SITE["since"]), visit_cta=t(lang, "visit_cta"),
-        hours="".join("<li><span>{}</span><span>{}</span></li>".format(e(d), e(v))
-                      for d, v in hours_rows(lang)),
+        storefront_block="""<section class="section storefront">
+  <div class="wrap">
+    <div class="section-head section-head--center">
+      <span class="eyebrow eyebrow--carrot">{pin} {visit_eyebrow}</span>
+      <h2>{visit_title}</h2>
+      <p>{visit_body}</p>
+    </div>
+  </div>
+  <div class="storefront__media reveal">
+    <img src="{b}{shop_wide}" alt="{visit_alt}" loading="lazy" width="1800" height="1013">
+    <span class="sticker storefront__sticker">{paw} {sticker_since}</span>
+  </div>
+  <div class="wrap">
+    <div class="storefront__card reveal">
+      <div>
+        <h3>{store} {visit_card_hours}</h3>
+        <ul class="hours">{hours}</ul>
+      </div>
+      <div>
+        <h3>{pin} {visit_card_address}</h3>
+        <p class="lede" style="margin-bottom:.5rem">{street}<br>{zip} {city}</p>
+        <p class="muted" style="font-size:var(--step--1)">{parking}</p>
+        <div class="hero__actions" style="margin-top:1rem">
+          <a class="btn btn--forest" href="{b}contact.html">{visit_cta} {arrow}</a>
+          <a class="btn btn--outline" href="{maps}" target="_blank" rel="noopener">{maps_label}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>""".format(
+            b=base, shop_wide=e(IMG["shop_wide"]), visit_alt=t(lang, "visit_alt"),
+            pin=icon("pin"), paw=icon("paw"), store=icon("store"), arrow=icon("arrow"),
+            sticker_since=t(lang, "hero_sticker_since", since=SITE["since"]),
+            visit_eyebrow=t(lang, "visit_eyebrow"), visit_title=t(lang, "visit_title"),
+            visit_body=t(lang, "visit_body", since=SITE["since"]),
+            visit_card_hours=t(lang, "contact_hours"), visit_card_address=t(lang, "contact_address"),
+            street=e(SITE["address"]["street"]), zip=e(SITE["address"]["zip"]),
+            city=e(SITE["address"]["city"]), parking=e(site_text(lang, "parking")),
+            visit_cta=t(lang, "visit_cta"), maps=e(SITE["maps"]),
+            maps_label=t(lang, "contact_maps"),
+            hours="".join("<li><span>{}</span><span>{}</span></li>".format(e(d), e(v))
+                          for d, v in hours_rows(lang))),
         shop_cat=shop_cat_section(lang, base), since=SITE["since"], count=len(PRODUCTS),
         stat1=t(lang, "stat_1"), stat2=t(lang, "stat_2"), stat3=t(lang, "stat_3"),
         stat4=t(lang, "stat_4"), cta=cta_band(lang, base))

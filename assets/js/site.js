@@ -145,7 +145,9 @@
 
   var index = 0;
   var timer = null;
-  var DELAY = 5200;
+  var DELAY = 4600;
+  var progress = slider.querySelector("[data-hero-progress]");
+  if (progress) progress.style.setProperty("--hero-delay", DELAY + "ms");
 
   function show(next) {
     index = (next + slides.length) % slides.length;
@@ -154,16 +156,26 @@
       dot.classList.toggle("is-active", i === index);
       dot.setAttribute("aria-selected", String(i === index));
     });
+    restartProgress();
+  }
+
+  function restartProgress() {
+    if (!progress) return;
+    progress.classList.remove("is-running");
+    void progress.offsetWidth;          // forceer een reflow zodat de animatie opnieuw start
+    if (timer) progress.classList.add("is-running");
   }
 
   function start() {
     if (timer) return;
     timer = setInterval(function () { show(index + 1); }, DELAY);
+    restartProgress();
   }
 
   function stop() {
     clearInterval(timer);
     timer = null;
+    if (progress) progress.classList.remove("is-running");
   }
 
   dots.forEach(function (dot, i) {
