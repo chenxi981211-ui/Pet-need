@@ -79,6 +79,13 @@
   },
   "hero_slides": [
    {
+    "image": "assets/img/hero/winkel.jpg",
+    "alt": "De winkel van Pet Needs aan de Choorstraat 49 in Delft",
+    "label": "onze winkel",
+    "alt_en": "The Pet Needs shop on Choorstraat 49 in Delft",
+    "label_en": "our shop"
+   },
+   {
     "image": "assets/img/hero/kat.jpg",
     "alt": "Kat likt haar neus bij een lepel voer",
     "label": "kat",
@@ -105,13 +112,6 @@
     "label": "cavia",
     "alt_en": "A girl looking at her guinea pig",
     "label_en": "guinea pig"
-   },
-   {
-    "image": "assets/img/hero/winkel.jpg",
-    "alt": "De winkel van Pet Needs aan de Choorstraat 49 in Delft",
-    "label": "onze winkel",
-    "alt_en": "The Pet Needs shop on Choorstraat 49 in Delft",
-    "label_en": "our shop"
    }
   ]
  },
