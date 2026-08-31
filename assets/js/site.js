@@ -150,7 +150,7 @@
 
   var index = 0;
   var timer = null;
-  var DELAY = 4600;
+  var DELAY = 3000;
   var progress = slider.querySelector("[data-hero-progress]");
   if (progress) progress.style.setProperty("--hero-delay", DELAY + "ms");
 
