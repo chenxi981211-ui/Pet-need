@@ -1,5 +1,9 @@
 # Pet Needs — nieuwe website
 
+**Live:** https://chenxi981211-ui.github.io/Pet-need/ (Nederlands) ·
+https://chenxi981211-ui.github.io/Pet-need/en/ (English)
+Gehost via GitHub Pages vanaf branch `main`; elke push publiceert opnieuw.
+
 Statische website voor dierenspeciaalzaak **Pet Needs**, Choorstraat 49, Delft.
 De inhoud komt van de bestaande site (petneeds.nl, gebouwd met ShopFactory) en is
 opnieuw vormgegeven: fris, jong en mobiel-eerst, zonder frameworks of build-tools.
@@ -17,10 +21,27 @@ opnieuw vormgegeven: fris, jong en mobiel-eerst, zonder frameworks of build-tool
 | Dierenarts | `dierenarts.html` |
 | Bezoek & contact | `contact.html` |
 | Privacy | `privacy.html` |
+| Engelse site (zelfde paden) | `en/…` |
 | **Stijlgids (design system)** | `styleguide.html` |
 
 Alle HTML wordt **gegenereerd** uit `data/site.json`. Pas dus nooit de HTML in de
 root aan — die wordt bij de volgende build overschreven.
+
+## Talen
+
+De site wordt in twee talen gebouwd: **Nederlands in de root**, **Engels onder `/en/`**,
+met dezelfde bestandsnamen. De schakelaar rechtsboven wijst altijd naar dezelfde pagina
+in de andere taal, en elke pagina heeft `hreflang`-alternates.
+
+- Interfaceteksten → `scripts/i18n.py` (`TEXT["nl"]` / `TEXT["en"]`, plus dagen,
+  dierlabels en de losse teksten uit `SITE_TEXT`).
+- Data-teksten → `data/site.json`: categorieën hebben `name_en` / `intro_en`,
+  producten `description_en`, foto's `*_alt_en`.
+- De JavaScript-teksten (winkelwagen, validatie, WhatsApp-bericht) komen mee via
+  `window.PN_I18N`, dat de build per pagina meegeeft.
+
+Een derde taal toevoegen: blok kopiëren in `scripts/i18n.py`, code toevoegen aan `LANGS`
+en `_xx`-velden in `data/site.json` zetten.
 
 ## Design system
 
