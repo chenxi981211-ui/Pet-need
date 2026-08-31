@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stijlgids — Pet Needs</title>
+<meta name="description" content="Het design system van de Pet Needs website: kleuren, typografie, iconen en componenten.">
+<meta property="og:title" content="Stijlgids — Pet Needs">
+<meta property="og:description" content="Het design system van de Pet Needs website: kleuren, typografie, iconen en componenten.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#14523a">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128062;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css?v=0e3d6986">
+
+</head>
+<body data-base="" data-lang="nl">
+
+<a class="skip-link" href="#main">Naar de inhoud</a>
+<div class="topbar">
+  <div class="wrap topbar__inner">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg> Bezorging in Delft e.o. op dinsdag en vrijdag</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Advies nodig? App ons op&nbsp;<a href="https://wa.me/31610837512?text=Hallo%20Pet%20Needs%2C%20ik%20heb%20een%20vraag.">06 10 83 75 12</a></span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="wrap header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark"><svg viewBox="-1.5 0 19 19" fill="currentColor" aria-hidden="true"><path d="M4.086 7.9a1.91 1.91 0 0 1-.763 2.52c-.81.285-1.782-.384-2.17-1.492a1.91 1.91 0 0 1 .762-2.521c.81-.285 1.782.384 2.171 1.492zm6.521 7.878a2.683 2.683 0 0 1-1.903-.788.996.996 0 0 0-1.408 0 2.692 2.692 0 0 1-3.807-3.807 6.377 6.377 0 0 1 9.022 0 2.692 2.692 0 0 1-1.904 4.595zM7.73 6.057c.127 1.337-.563 2.496-1.54 2.588-.977.092-1.872-.917-1.998-2.254-.127-1.336.563-2.495 1.54-2.587.977-.093 1.871.916 1.998 2.253zm.54 0c-.127 1.337.563 2.496 1.54 2.588.977.092 1.871-.917 1.998-2.254.127-1.336-.563-2.495-1.54-2.587-.977-.093-1.872.916-1.998 2.253zm3.644 1.842a1.91 1.91 0 0 0 .763 2.522c.81.284 1.782-.385 2.17-1.493a1.91 1.91 0 0 0-.762-2.521c-.81-.285-1.782.384-2.171 1.492z"/></svg></span>
+      <span>Pet Needs<small>Dierenspeciaalzaak Delft</small></span>
+    </a>
+    <nav class="nav" data-nav aria-label="Home">
+      <ul class="nav__list"><li><a class="nav__link" href="index.html">Home</a></li><li><a class="nav__link" href="assortiment.html">Assortiment</a></li><li><a class="nav__link" href="dierenarts.html">Dierenarts</a></li><li><a class="nav__link" href="over-ons.html">Over ons</a></li><li><a class="nav__link" href="contact.html">Bezoek &amp; contact</a></li>
+        <li class="nav__item--mobile"><a class="nav__link" href="bestellen.html">Winkelwagen &amp; bestellen</a></li>
+        <li class="nav__item--lang"><div class="lang" role="group" aria-label="Taal"><a class="lang__link is-active" href="styleguide.html" hreflang="nl" lang="nl" title="Nederlands" aria-current="true">NL</a><a class="lang__link" href="en/index.html" hreflang="en" lang="en" title="English">EN</a></div></li>
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <div class="lang" role="group" aria-label="Taal"><a class="lang__link is-active" href="styleguide.html" hreflang="nl" lang="nl" title="Nederlands" aria-current="true">NL</a><a class="lang__link" href="en/index.html" hreflang="en" lang="en" title="English">EN</a></div>
+      <a class="btn btn--primary btn--sm hide-sm" href="bestellen.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 11.2a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5.5 8Z"/><path d="M9 8V6.6a3 3 0 0 1 6 0V8"/></svg> Bestellen</a>
+      <button class="icon-btn cart-btn" data-cart-open aria-label="Winkelwagen openen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 11.2a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5.5 8Z"/><path d="M9 8V6.6a3 3 0 0 1 6 0V8"/></svg><span class="cart-btn__count" data-cart-count hidden>0</span>
+      </button>
+      <button class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Menu openen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Stijlgids</span></nav></div>
+<section class="section" style="padding-top:1.5rem">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.3 10.2c1.3 0 2.2-1.5 2-3.2-.2-1.8-1.3-3-2.6-3S4.5 5.5 4.7 7.3c.2 1.7 1.3 2.9 2.6 2.9Zm9.4 0c1.3 0 2.4-1.2 2.6-2.9.2-1.8-.7-3.3-2-3.3s-2.4 1.2-2.6 3c-.2 1.7.7 3.2 2 3.2ZM3.6 15.8c1.1.6 2.5 0 3.2-1.4.7-1.5.3-3-.8-3.6-1.1-.6-2.5 0-3.2 1.4-.7 1.5-.3 3 .8 3.6Zm16.8 0c1.1-.6 1.5-2.1.8-3.6-.7-1.4-2.1-2-3.2-1.4-1.1.6-1.5 2.1-.8 3.6.7 1.4 2.1 2 3.2 1.4ZM12 12.4c-2.6 0-5.6 2.7-5.6 5.2 0 1.6 1.2 2.6 3 2.6 1.1 0 1.9-.4 2.6-.4s1.5.4 2.6.4c1.8 0 3-1 3-2.6 0-2.5-3-5.2-5.6-5.2Z"/></svg> Design system</span>
+      <h1>Stijlgids</h1>
+      <p>Alle bouwstenen van de site op één pagina. Gebruik deze tokens en componenten, dan blijft het geheel consistent. Bron: <code>assets/css/site.css</code>, <code>scripts/build.py</code> en <code>scripts/i18n.py</code>.</p>
+    </div>
+
+    <h2>1. Kleur</h2>
+    <div class="grid-auto" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"><div><div style="background:var(--forest);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Forest</strong><br><span class="muted">--forest · #14523a</span></p></div><div><div style="background:var(--forest-deep);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Forest deep</strong><br><span class="muted">--forest-deep · #0e3b29</span></p></div><div><div style="background:var(--forest-soft);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Forest soft</strong><br><span class="muted">--forest-soft · #dfeee4</span></p></div><div><div style="background:var(--carrot);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Carrot</strong><br><span class="muted">--carrot · #ff6f2c</span></p></div><div><div style="background:var(--carrot-soft);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Carrot soft</strong><br><span class="muted">--carrot-soft · #ffe7d8</span></p></div><div><div style="background:var(--sun);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Sun</strong><br><span class="muted">--sun · #ffcf4d</span></p></div><div><div style="background:var(--cream);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Cream</strong><br><span class="muted">--cream · #fdf8f0</span></p></div><div><div style="background:var(--sand);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Sand</strong><br><span class="muted">--sand · #f7eddf</span></p></div><div><div style="background:var(--ink);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Ink</strong><br><span class="muted">--ink · #16211c</span></p></div><div><div style="background:var(--ink-soft);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Ink soft</strong><br><span class="muted">--ink-soft · #4c5a53</span></p></div><div><div style="background:var(--tint-mint);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Tint mint</strong><br><span class="muted">--tint-mint · #dff0e4</span></p></div><div><div style="background:var(--tint-sky);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Tint sky</strong><br><span class="muted">--tint-sky · #dcecf8</span></p></div><div><div style="background:var(--tint-blush);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Tint blush</strong><br><span class="muted">--tint-blush · #ffe2d6</span></p></div><div><div style="background:var(--tint-lilac);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Tint lilac</strong><br><span class="muted">--tint-lilac · #e9e3f9</span></p></div><div><div style="background:var(--tint-butter);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Tint butter</strong><br><span class="muted">--tint-butter · #fdf0c4</span></p></div><div><div style="background:var(--tint-sage);height:74px;border-radius:var(--r-md);border:1px solid var(--line)"></div><p style="margin:.5rem 0 0;font-size:.8rem"><strong>Tint sage</strong><br><span class="muted">--tint-sage · #e4ecdc</span></p></div></div>
+
+    <h2 class="mt-lg">2. Typografie</h2>
+    <div class="info">
+      <p class="muted" style="margin-bottom:1rem">Display: <strong>Outfit</strong> · Body: <strong>Plus Jakarta Sans</strong></p>
+      <h1 style="margin-bottom:.2em">Heading 1 — step-4</h1>
+      <h2 style="margin-bottom:.2em">Heading 2 — step-3</h2>
+      <h3 style="margin-bottom:.2em">Heading 3 — step-1</h3>
+      <p class="lede">Lede — step-1, voor introducties onder een kop.</p>
+      <p>Body — step-0, de basisregel voor lopende tekst.</p>
+      <p class="muted" style="font-size:var(--step--1)">Small — step--1, voor meta-informatie.</p>
+    </div>
+
+    <h2 class="mt-lg">3. Iconen</h2>
+    <div class="grid-auto" style="grid-template-columns:repeat(auto-fit,minmax(96px,1fr))"><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="-1.5 0 19 19" fill="currentColor" aria-hidden="true"><path d="M4.086 7.9a1.91 1.91 0 0 1-.763 2.52c-.81.285-1.782-.384-2.17-1.492a1.91 1.91 0 0 1 .762-2.521c.81-.285 1.782.384 2.171 1.492zm6.521 7.878a2.683 2.683 0 0 1-1.903-.788.996.996 0 0 0-1.408 0 2.692 2.692 0 0 1-3.807-3.807 6.377 6.377 0 0 1 9.022 0 2.692 2.692 0 0 1-1.904 4.595zM7.73 6.057c.127 1.337-.563 2.496-1.54 2.588-.977.092-1.872-.917-1.998-2.254-.127-1.336.563-2.495 1.54-2.587.977-.093 1.871.916 1.998 2.253zm.54 0c-.127 1.337.563 2.496 1.54 2.588.977.092 1.871-.917 1.998-2.254.127-1.336-.563-2.495-1.54-2.587-.977-.093-1.872.916-1.998 2.253zm3.644 1.842a1.91 1.91 0 0 0 .763 2.522c.81.284 1.782-.385 2.17-1.493a1.91 1.91 0 0 0-.762-2.521c-.81-.285-1.782.384-2.171 1.492z"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">logo</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.3 10.2c1.3 0 2.2-1.5 2-3.2-.2-1.8-1.3-3-2.6-3S4.5 5.5 4.7 7.3c.2 1.7 1.3 2.9 2.6 2.9Zm9.4 0c1.3 0 2.4-1.2 2.6-2.9.2-1.8-.7-3.3-2-3.3s-2.4 1.2-2.6 3c-.2 1.7.7 3.2 2 3.2ZM3.6 15.8c1.1.6 2.5 0 3.2-1.4.7-1.5.3-3-.8-3.6-1.1-.6-2.5 0-3.2 1.4-.7 1.5-.3 3 .8 3.6Zm16.8 0c1.1-.6 1.5-2.1.8-3.6-.7-1.4-2.1-2-3.2-1.4-1.1.6-1.5 2.1-.8 3.6.7 1.4 2.1 2 3.2 1.4ZM12 12.4c-2.6 0-5.6 2.7-5.6 5.2 0 1.6 1.2 2.6 3 2.6 1.1 0 1.9-.4 2.6-.4s1.5.4 2.6.4c1.8 0 3-1 3-2.6 0-2.5-3-5.2-5.6-5.2Z"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">paw</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">check</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">truck</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">clock</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.6 12 20 12 20Z"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">heart</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">pin</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2.2 2A17 17 0 0 1 3 5.2 2 2 0 0 1 5 3Z"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">phone</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.5-.6c.1-.2.1-.3 0-.5l-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4 5 5 0 0 0 2.6.6 2.5 2.5 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c0-.1-.2-.2-.3-.2Z"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">whatsapp</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">search</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">menu</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">arrow</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M10 15v1a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="12" r="2"/><path d="M6 3H4m10 0h2"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">stethoscope</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20c0-8 5-14 16-15 0 10-5 15-13 15H4Z"/><path d="M9 15c2-3 5-5 8-6"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">leaf</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3 2.6 5.6 6 .8-4.4 4.2 1.1 6L12 16.8 6.7 19.6l1.1-6L3.4 9.4l6-.8Z"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">star</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.5 5C6.5 6.4 4.6 9.2 4.6 12.6c0 3.4 2 5.6 4.6 5.6 2.2 0 3.9-1.6 3.9-3.8 0-2.1-1.5-3.6-3.4-3.6-.4 0-.8.1-1 .2.4-1.6 1.7-3 3.4-3.9L9.5 5Zm9 0c-3 1.4-4.9 4.2-4.9 7.6 0 3.4 2 5.6 4.6 5.6 2.2 0 3.9-1.6 3.9-3.8 0-2.1-1.5-3.6-3.4-3.6-.4 0-.8.1-1 .2.4-1.6 1.7-3 3.4-3.9L18.5 5Z"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">quote</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 11.2a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5.5 8Z"/><path d="M9 8V6.6a3 3 0 0 1 6 0V8"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">bag</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">close</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">plus</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">minus</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7m-8 0 1 12.2A1.8 1.8 0 0 0 9.8 21h4.4a1.8 1.8 0 0 0 1.8-1.8L17 7"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">trash</p></div><div class="center" style="background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:1rem"><span style="display:grid;place-items:center;color:var(--forest)"><svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9"/><path d="M3 6.5 4.5 3h15L21 6.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0Z"/><path d="M10 20v-5h4v5"/></svg></span><p class="muted" style="margin:.5rem 0 0;font-size:.75rem">store</p></div></div>
+
+    <h2 class="mt-lg">4. Knoppen</h2>
+    <div class="info" style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center">
+      <a class="btn btn--primary" href="#main">Primary</a>
+      <a class="btn btn--forest" href="#main">Forest</a>
+      <a class="btn btn--outline" href="#main">Outline</a>
+      <a class="btn btn--light" href="#main">Light</a>
+      <a class="btn btn--wa" href="#main"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.5-.6c.1-.2.1-.3 0-.5l-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4 5 5 0 0 0 2.6.6 2.5 2.5 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c0-.1-.2-.2-.3-.2Z"/></svg> WhatsApp</a>
+      <a class="btn btn--primary btn--sm" href="#main">Small</a>
+      <a class="btn btn--primary btn--lg" href="#main">Large</a>
+    </div>
+
+    <h2 class="mt-lg">5. Labels &amp; stickers</h2>
+    <div class="info" style="display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center">
+      <span class="eyebrow" style="margin:0"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.3 10.2c1.3 0 2.2-1.5 2-3.2-.2-1.8-1.3-3-2.6-3S4.5 5.5 4.7 7.3c.2 1.7 1.3 2.9 2.6 2.9Zm9.4 0c1.3 0 2.4-1.2 2.6-2.9.2-1.8-.7-3.3-2-3.3s-2.4 1.2-2.6 3c-.2 1.7.7 3.2 2 3.2ZM3.6 15.8c1.1.6 2.5 0 3.2-1.4.7-1.5.3-3-.8-3.6-1.1-.6-2.5 0-3.2 1.4-.7 1.5-.3 3 .8 3.6Zm16.8 0c1.1-.6 1.5-2.1.8-3.6-.7-1.4-2.1-2-3.2-1.4-1.1.6-1.5 2.1-.8 3.6.7 1.4 2.1 2 3.2 1.4ZM12 12.4c-2.6 0-5.6 2.7-5.6 5.2 0 1.6 1.2 2.6 3 2.6 1.1 0 1.9-.4 2.6-.4s1.5.4 2.6.4c1.8 0 3-1 3-2.6 0-2.5-3-5.2-5.6-5.2Z"/></svg> Eyebrow</span>
+      <span class="eyebrow eyebrow--carrot" style="margin:0">Eyebrow carrot</span>
+      <span class="eyebrow eyebrow--sun" style="margin:0">Eyebrow sun</span>
+      <span class="sticker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.6 12 20 12 20Z"/></svg> Sticker</span>
+      <span class="sticker sticker--carrot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M10 15v1a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="12" r="2"/><path d="M6 3H4m10 0h2"/></svg> Sticker carrot</span>
+      <span class="sticker sticker--white"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20c0-8 5-14 16-15 0 10-5 15-13 15H4Z"/><path d="M9 15c2-3 5-5 8-6"/></svg> Sticker wit</span>
+    </div>
+
+    <h2 class="mt-lg">6. Chips &amp; zoeken</h2>
+    <div class="info">
+      <div class="toolbar" style="margin:0">
+        <div class="chips">
+          <button class="chip is-active">Alles</button>
+          <button class="chip">Hond</button>
+          <button class="chip">Kat</button>
+          <button class="chip">Knaagdier</button>
+        </div>
+        <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Zoek een product…"></label>
+      </div>
+    </div>
+
+    <h2 class="mt-lg">7. Kaarten</h2>
+    <div class="products" style="margin-bottom:var(--gap)">
+      
+<article class="product reveal" data-product data-category="bodembedekking" data-pet="knaagdier" data-search="Barni cottonclean 40ltr Bodembedekking: hooi, stro &amp; zaagsel ">
+  <div class="product__media"><img src="assets/img/products/barni-cottonclean-40ltr.jpg" alt="Barni cottonclean 40ltr" loading="lazy" width="600" height="600"></div>
+  <div class="product__body">
+    <span class="product__cat">Bodembedekking: hooi, stro &amp; zaagsel</span>
+    <h3 class="product__title"><a href="product/barni-cottonclean-40ltr.html">Barni cottonclean 40ltr</a></h3>
+    <div class="product__foot"><span class="price">€ 9,99</span>
+      <button class="product__add" type="button" data-add-to-cart data-sku="P111" data-name="Barni cottonclean 40ltr" data-price="9.99" data-image="assets/img/products/barni-cottonclean-40ltr.jpg" data-url="product/barni-cottonclean-40ltr.html" aria-label="Barni cottonclean 40ltr toevoegen aan winkelwagen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 11.2a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5.5 8Z"/><path d="M9 8V6.6a3 3 0 0 1 6 0V8"/></svg><span>Toevoegen</span></button>
+    </div>
+  </div>
+</article>
+<article class="product reveal" data-product data-category="bodembedekking" data-pet="knaagdier" data-search="Beukensnippers Bodembedekking: hooi, stro &amp; zaagsel ">
+  <div class="product__media"><img src="assets/img/products/beukensnippers.jpg" alt="Beukensnippers" loading="lazy" width="600" height="600"></div>
+  <div class="product__body">
+    <span class="product__cat">Bodembedekking: hooi, stro &amp; zaagsel</span>
+    <h3 class="product__title"><a href="product/beukensnippers.html">Beukensnippers</a></h3>
+    <div class="product__foot"><span class="price">€ 6,99</span>
+      <button class="product__add" type="button" data-add-to-cart data-sku="P114" data-name="Beukensnippers" data-price="6.99" data-image="assets/img/products/beukensnippers.jpg" data-url="product/beukensnippers.html" aria-label="Beukensnippers toevoegen aan winkelwagen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 11.2a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5.5 8Z"/><path d="M9 8V6.6a3 3 0 0 1 6 0V8"/></svg><span>Toevoegen</span></button>
+    </div>
+  </div>
+</article>
+      <article class="card">
+        <div class="card__media tint-blush"><img src="assets/img/products/dog-art-halsband-35cm.jpg" alt="" loading="lazy"></div>
+        <div class="card__body"><h3 class="card__title">Categoriekaart</h3><p class="card__meta">12 producten</p></div>
+      </article>
+      <div class="pet">
+        <span class="pet__ring tint-blush"><img src="assets/img/pets/hond.jpg" alt="" loading="lazy"></span>
+        <span class="pet__label">Dierkaart</span><span class="pet__count">24 producten</span>
+      </div>
+    </div>
+    <div class="grid-auto">
+      <div class="info"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Info-kaart</h3><p>Voor openingstijden, adres en losse blokjes uitleg.</p></div>
+      <div class="step"><div class="step__num"></div><h3>Stap-kaart</h3><p>Genummerde stappen, telt automatisch door.</p></div>
+      <div class="stat"><strong>1992</strong><span>Stat-kaart</span></div>
+      <div class="info"><div class="feature"><span class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7C19 15.6 12 20 12 20Z"/></svg></span><div><h3>Feature-rij</h3><p>Icoon plus korte uitleg.</p></div></div></div>
+    </div>
+
+    <h2 class="mt-lg">8. Citaat</h2>
+    <div class="quote">
+      <span class="quote__mark"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.5 5C6.5 6.4 4.6 9.2 4.6 12.6c0 3.4 2 5.6 4.6 5.6 2.2 0 3.9-1.6 3.9-3.8 0-2.1-1.5-3.6-3.4-3.6-.4 0-.8.1-1 .2.4-1.6 1.7-3 3.4-3.9L9.5 5Zm9 0c-3 1.4-4.9 4.2-4.9 7.6 0 3.4 2 5.6 4.6 5.6 2.2 0 3.9-1.6 3.9-3.8 0-2.1-1.5-3.6-3.4-3.6-.4 0-.8.1-1 .2.4-1.6 1.7-3 3.4-3.9L18.5 5Z"/></svg></span>
+      <p>Bij het advies dat u krijgt staat uw huisdier centraal.</p>
+      <cite>— Pet Needs, Choorstraat 49</cite>
+    </div>
+
+    <h2 class="mt-lg">9. Fotolijsten</h2>
+    <div class="grid-auto">
+      <div><div class="frame frame--4x3"><img src="assets/img/products/dog-art-halsband-35cm.jpg" alt="" loading="lazy"></div><p class="muted" style="margin-top:.5rem;font-size:.8rem">frame--4x3</p></div>
+      <div><div class="frame frame--circle"><img src="assets/img/pets/hond.jpg" alt="" loading="lazy"></div><p class="muted" style="margin-top:.5rem;font-size:.8rem">frame--circle</p></div>
+      <div><div class="frame frame--squircle frame--1x1"><img src="assets/img/pets/kat.jpg" alt="" loading="lazy"></div><p class="muted" style="margin-top:.5rem;font-size:.8rem">frame--squircle</p></div>
+    </div>
+
+    <h2 class="mt-lg">10. Bestellen</h2>
+    <div class="grid-auto">
+      <div class="info">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 11.2a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5.5 8Z"/><path d="M9 8V6.6a3 3 0 0 1 6 0V8"/></svg> Winkelwagenregel</h3>
+        <ul class="cart-lines" style="margin-top:.75rem">
+          <li class="cart-line">
+            <span class="cart-line__media"><img src="assets/img/products/barni-cottonclean-40ltr.jpg" alt=""></span>
+            <div class="cart-line__body">
+              <span class="cart-line__name">Productnaam</span>
+              <div class="cart-line__row">
+                <div class="qty qty--sm">
+                  <button type="button" class="qty__btn">&minus;</button>
+                  <span class="qty__value">2</span>
+                  <button type="button" class="qty__btn">+</button>
+                </div>
+                <span class="cart-line__price">€ 7,98</span>
+              </div>
+            </div>
+            <button type="button" class="cart-line__remove" aria-label="Verwijderen">&times;</button>
+          </li>
+        </ul>
+      </div>
+      <div class="info">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Aantalkiezer &amp; toevoegen</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-top:.75rem">
+          <div class="qty">
+            <button type="button" class="qty__btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+            <input class="qty__input" type="number" value="1" aria-label="Aantal">
+            <button type="button" class="qty__btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+          </div>
+          <button type="button" class="product__add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 11.2a2 2 0 0 1-2 1.8H8.5a2 2 0 0 1-2-1.8L5.5 8Z"/><path d="M9 8V6.6a3 3 0 0 1 6 0V8"/></svg><span>Toevoegen</span></button>
+        </div>
+      </div>
+      <div class="info">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9"/><path d="M3 6.5 4.5 3h15L21 6.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0Z"/><path d="M10 20v-5h4v5"/></svg> Keuzekaart</h3>
+        <label class="choice" style="margin-top:.75rem">
+          <input type="radio" name="sg-choice" checked>
+          <span class="choice__body">
+            <span class="choice__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9"/><path d="M3 6.5 4.5 3h15L21 6.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0Z"/><path d="M10 20v-5h4v5"/></svg></span>
+            <strong>Ophalen in de winkel</strong>
+            <span>Geselecteerde staat van .choice</span>
+          </span>
+        </label>
+      </div>
+      <div class="info">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Formulierveld</h3>
+        <label class="field" style="margin-top:.75rem">
+          <span class="field__label">Telefoon <em>*</em></span>
+          <input type="tel" placeholder="06 12 34 56 78">
+          <span class="field__error">Foutmelding verschijnt hier</span>
+        </label>
+      </div>
+    </div>
+
+    <h2 class="mt-lg">11. Secties</h2>
+    <div class="stack">
+      <div class="section--sand" style="padding:1.5rem;border-radius:var(--r-lg)"><strong>.section--sand</strong> — zandkleurige band voor afwisseling.</div>
+      <div class="section--forest paw-bg" style="padding:1.5rem;border-radius:var(--r-lg)"><strong>.section--forest + .paw-bg</strong> — groene band met pootjespatroon.</div>
+      <div class="strip" style="border-radius:var(--r-lg)"><div class="strip__track"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.3 10.2c1.3 0 2.2-1.5 2-3.2-.2-1.8-1.3-3-2.6-3S4.5 5.5 4.7 7.3c.2 1.7 1.3 2.9 2.6 2.9Zm9.4 0c1.3 0 2.4-1.2 2.6-2.9.2-1.8-.7-3.3-2-3.3s-2.4 1.2-2.6 3c-.2 1.7.7 3.2 2 3.2ZM3.6 15.8c1.1.6 2.5 0 3.2-1.4.7-1.5.3-3-.8-3.6-1.1-.6-2.5 0-3.2 1.4-.7 1.5-.3 3 .8 3.6Zm16.8 0c1.1-.6 1.5-2.1.8-3.6-.7-1.4-2.1-2-3.2-1.4-1.1.6-1.5 2.1-.8 3.6.7 1.4 2.1 2 3.2 1.4ZM12 12.4c-2.6 0-5.6 2.7-5.6 5.2 0 1.6 1.2 2.6 3 2.6 1.1 0 1.9-.4 2.6-.4s1.5.4 2.6.4c1.8 0 3-1 3-2.6 0-2.5-3-5.2-5.6-5.2Z"/></svg> Design system</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.3 10.2c1.3 0 2.2-1.5 2-3.2-.2-1.8-1.3-3-2.6-3S4.5 5.5 4.7 7.3c.2 1.7 1.3 2.9 2.6 2.9Zm9.4 0c1.3 0 2.4-1.2 2.6-2.9.2-1.8-.7-3.3-2-3.3s-2.4 1.2-2.6 3c-.2 1.7.7 3.2 2 3.2ZM3.6 15.8c1.1.6 2.5 0 3.2-1.4.7-1.5.3-3-.8-3.6-1.1-.6-2.5 0-3.2 1.4-.7 1.5-.3 3 .8 3.6Zm16.8 0c1.1-.6 1.5-2.1.8-3.6-.7-1.4-2.1-2-3.2-1.4-1.1.6-1.5 2.1-.8 3.6.7 1.4 2.1 2 3.2 1.4ZM12 12.4c-2.6 0-5.6 2.7-5.6 5.2 0 1.6 1.2 2.6 3 2.6 1.1 0 1.9-.4 2.6-.4s1.5.4 2.6.4c1.8 0 3-1 3-2.6 0-2.5-3-5.2-5.6-5.2Z"/></svg> Design system</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.3 10.2c1.3 0 2.2-1.5 2-3.2-.2-1.8-1.3-3-2.6-3S4.5 5.5 4.7 7.3c.2 1.7 1.3 2.9 2.6 2.9Zm9.4 0c1.3 0 2.4-1.2 2.6-2.9.2-1.8-.7-3.3-2-3.3s-2.4 1.2-2.6 3c-.2 1.7.7 3.2 2 3.2ZM3.6 15.8c1.1.6 2.5 0 3.2-1.4.7-1.5.3-3-.8-3.6-1.1-.6-2.5 0-3.2 1.4-.7 1.5-.3 3 .8 3.6Zm16.8 0c1.1-.6 1.5-2.1.8-3.6-.7-1.4-2.1-2-3.2-1.4-1.1.6-1.5 2.1-.8 3.6.7 1.4 2.1 2 3.2 1.4ZM12 12.4c-2.6 0-5.6 2.7-5.6 5.2 0 1.6 1.2 2.6 3 2.6 1.1 0 1.9-.4 2.6-.4s1.5.4 2.6.4c1.8 0 3-1 3-2.6 0-2.5-3-5.2-5.6-5.2Z"/></svg> Design system</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.3 10.2c1.3 0 2.2-1.5 2-3.2-.2-1.8-1.3-3-2.6-3S4.5 5.5 4.7 7.3c.2 1.7 1.3 2.9 2.6 2.9Zm9.4 0c1.3 0 2.4-1.2 2.6-2.9.2-1.8-.7-3.3-2-3.3s-2.4 1.2-2.6 3c-.2 1.7.7 3.2 2 3.2ZM3.6 15.8c1.1.6 2.5 0 3.2-1.4.7-1.5.3-3-.8-3.6-1.1-.6-2.5 0-3.2 1.4-.7 1.5-.3 3 .8 3.6Zm16.8 0c1.1-.6 1.5-2.1.8-3.6-.7-1.4-2.1-2-3.2-1.4-1.1.6-1.5 2.1-.8 3.6.7 1.4 2.1 2 3.2 1.4ZM12 12.4c-2.6 0-5.6 2.7-5.6 5.2 0 1.6 1.2 2.6 3 2.6 1.1 0 1.9-.4 2.6-.4s1.5.4 2.6.4c1.8 0 3-1 3-2.6 0-2.5-3-5.2-5.6-5.2Z"/></svg> Design system</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.3 10.2c1.3 0 2.2-1.5 2-3.2-.2-1.8-1.3-3-2.6-3S4.5 5.5 4.7 7.3c.2 1.7 1.3 2.9 2.6 2.9Zm9.4 0c1.3 0 2.4-1.2 2.6-2.9.2-1.8-.7-3.3-2-3.3s-2.4 1.2-2.6 3c-.2 1.7.7 3.2 2 3.2ZM3.6 15.8c1.1.6 2.5 0 3.2-1.4.7-1.5.3-3-.8-3.6-1.1-.6-2.5 0-3.2 1.4-.7 1.5-.3 3 .8 3.6Zm16.8 0c1.1-.6 1.5-2.1.8-3.6-.7-1.4-2.1-2-3.2-1.4-1.1.6-1.5 2.1-.8 3.6.7 1.4 2.1 2 3.2 1.4ZM12 12.4c-2.6 0-5.6 2.7-5.6 5.2 0 1.6 1.2 2.6 3 2.6 1.1 0 1.9-.4 2.6-.4s1.5.4 2.6.4c1.8 0 3-1 3-2.6 0-2.5-3-5.2-5.6-5.2Z"/></svg> Design system</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.3 10.2c1.3 0 2.2-1.5 2-3.2-.2-1.8-1.3-3-2.6-3S4.5 5.5 4.7 7.3c.2 1.7 1.3 2.9 2.6 2.9Zm9.4 0c1.3 0 2.4-1.2 2.6-2.9.2-1.8-.7-3.3-2-3.3s-2.4 1.2-2.6 3c-.2 1.7.7 3.2 2 3.2ZM3.6 15.8c1.1.6 2.5 0 3.2-1.4.7-1.5.3-3-.8-3.6-1.1-.6-2.5 0-3.2 1.4-.7 1.5-.3 3 .8 3.6Zm16.8 0c1.1-.6 1.5-2.1.8-3.6-.7-1.4-2.1-2-3.2-1.4-1.1.6-1.5 2.1-.8 3.6.7 1.4 2.1 2 3.2 1.4ZM12 12.4c-2.6 0-5.6 2.7-5.6 5.2 0 1.6 1.2 2.6 3 2.6 1.1 0 1.9-.4 2.6-.4s1.5.4 2.6.4c1.8 0 3-1 3-2.6 0-2.5-3-5.2-5.6-5.2Z"/></svg> Design system</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.3 10.2c1.3 0 2.2-1.5 2-3.2-.2-1.8-1.3-3-2.6-3S4.5 5.5 4.7 7.3c.2 1.7 1.3 2.9 2.6 2.9Zm9.4 0c1.3 0 2.4-1.2 2.6-2.9.2-1.8-.7-3.3-2-3.3s-2.4 1.2-2.6 3c-.2 1.7.7 3.2 2 3.2ZM3.6 15.8c1.1.6 2.5 0 3.2-1.4.7-1.5.3-3-.8-3.6-1.1-.6-2.5 0-3.2 1.4-.7 1.5-.3 3 .8 3.6Zm16.8 0c1.1-.6 1.5-2.1.8-3.6-.7-1.4-2.1-2-3.2-1.4-1.1.6-1.5 2.1-.8 3.6.7 1.4 2.1 2 3.2 1.4ZM12 12.4c-2.6 0-5.6 2.7-5.6 5.2 0 1.6 1.2 2.6 3 2.6 1.1 0 1.9-.4 2.6-.4s1.5.4 2.6.4c1.8 0 3-1 3-2.6 0-2.5-3-5.2-5.6-5.2Z"/></svg> Design system</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.3 10.2c1.3 0 2.2-1.5 2-3.2-.2-1.8-1.3-3-2.6-3S4.5 5.5 4.7 7.3c.2 1.7 1.3 2.9 2.6 2.9Zm9.4 0c1.3 0 2.4-1.2 2.6-2.9.2-1.8-.7-3.3-2-3.3s-2.4 1.2-2.6 3c-.2 1.7.7 3.2 2 3.2ZM3.6 15.8c1.1.6 2.5 0 3.2-1.4.7-1.5.3-3-.8-3.6-1.1-.6-2.5 0-3.2 1.4-.7 1.5-.3 3 .8 3.6Zm16.8 0c1.1-.6 1.5-2.1.8-3.6-.7-1.4-2.1-2-3.2-1.4-1.1.6-1.5 2.1-.8 3.6.7 1.4 2.1 2 3.2 1.4ZM12 12.4c-2.6 0-5.6 2.7-5.6 5.2 0 1.6 1.2 2.6 3 2.6 1.1 0 1.9-.4 2.6-.4s1.5.4 2.6.4c1.8 0 3-1 3-2.6 0-2.5-3-5.2-5.6-5.2Z"/></svg> Design system</span></div></div>
+    </div>
+
+    <h2 class="mt-lg">12. Taal</h2>
+    <div class="info">
+      <p>De site wordt in twee talen gebouwd: Nederlands in de root, Engels onder <code>/en/</code>. Alle interfaceteksten staan in <code>scripts/i18n.py</code>; teksten die bij de data horen (categorieën, productomschrijvingen) hebben een <code>_en</code>-variant in <code>data/site.json</code>. De schakelaar rechtsboven wijst altijd naar dezelfde pagina in de andere taal.</p>
+      <div style="margin-top:1rem"><div class="lang" role="group" aria-label="Taal"><a class="lang__link is-active" href="styleguide.html" hreflang="nl" lang="nl" title="Nederlands" aria-current="true">NL</a><a class="lang__link" href="en/index.html" hreflang="en" lang="en" title="English">EN</a></div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand__mark"><svg viewBox="-1.5 0 19 19" fill="currentColor" aria-hidden="true"><path d="M4.086 7.9a1.91 1.91 0 0 1-.763 2.52c-.81.285-1.782-.384-2.17-1.492a1.91 1.91 0 0 1 .762-2.521c.81-.285 1.782.384 2.171 1.492zm6.521 7.878a2.683 2.683 0 0 1-1.903-.788.996.996 0 0 0-1.408 0 2.692 2.692 0 0 1-3.807-3.807 6.377 6.377 0 0 1 9.022 0 2.692 2.692 0 0 1-1.904 4.595zM7.73 6.057c.127 1.337-.563 2.496-1.54 2.588-.977.092-1.872-.917-1.998-2.254-.127-1.336.563-2.495 1.54-2.587.977-.093 1.871.916 1.998 2.253zm.54 0c-.127 1.337.563 2.496 1.54 2.588.977.092 1.871-.917 1.998-2.254.127-1.336-.563-2.495-1.54-2.587-.977-.093-1.872.916-1.998 2.253zm3.644 1.842a1.91 1.91 0 0 0 .763 2.522c.81.284 1.782-.385 2.17-1.493a1.91 1.91 0 0 0-.762-2.521c-.81-.285-1.782.384-2.171 1.492z"/></svg></span>
+          <span>Pet Needs<small>Sinds 1992 in Delft</small></span>
+        </a>
+        <p style="margin-top:1rem;max-width:22rem">Alles wat uw huisdier nodig heeft — met advies van mensen die uw dier kennen.</p>
+        <a class="btn btn--wa btn--sm" href="https://wa.me/31610837512?text=Hallo%20Pet%20Needs%2C%20ik%20heb%20een%20vraag."><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.1-.2 0-.4.1-.5l.5-.6c.1-.2.1-.3 0-.5l-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4 5 5 0 0 0 2.6.6 2.5 2.5 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c0-.1-.2-.2-.3-.2Z"/></svg> 06 10 83 75 12</a>
+      </div>
+      <div>
+        <h4>Assortiment</h4>
+        <ul class="footer__list"><li><a href="categorie/halsbanden-en-lijnen.html">Halsbanden en lijnen</a></li><li><a href="categorie/chunks.html">Chunks</a></li><li><a href="categorie/net-geboren.html">Net geboren</a></li><li><a href="categorie/vogels.html">Vogels</a></li><li><a href="categorie/kattenbakvulling.html">Kattenbakvulling</a></li><li><a href="categorie/naturis-diepvriesvlees.html">Naturis diepvries vlees</a></li><li><a href="categorie/prins-diepvriesvoeding.html">Prins diepvriesvoeding</a></li>
+          <li><a href="assortiment.html">Alle producten</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Winkel</h4>
+        <ul class="footer__list">
+          <li><a href="over-ons.html">Over ons</a></li>
+          <li><a href="dierenarts.html">Dierenarts</a></li>
+          <li><a href="contact.html">Openingstijden &amp; route</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="styleguide.html">Stijlgids</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Bezoek ons</h4>
+        <p style="margin-bottom:.75rem">Choorstraat 49<br>2611 JE Delft</p>
+        <ul class="hours"><li><span>Maandag</span><span>10.00 – 18.00</span></li><li><span>Dinsdag</span><span>9.00 – 18.00</span></li><li><span>Woensdag</span><span>9.00 – 18.00</span></li><li><span>Donderdag</span><span>9.00 – 18.00</span></li><li><span>Vrijdag</span><span>9.00 – 19.30</span></li><li><span>Zaterdag</span><span>9.00 – 18.00</span></li><li><span>Zondag</span><span>gesloten</span></li></ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; <span data-year>2026</span> Pet Needs — Choorstraat 49, Delft</span>
+      <span>Prijzen onder voorbehoud. Vraag gerust naar de actuele voorraad.</span>
+    </div>
+  </div>
+</footer>
+
+
+<div class="cart-backdrop" data-cart-backdrop hidden></div>
+<aside class="cart" data-cart-panel aria-label="Winkelwagen" aria-hidden="true" hidden>
+  <div class="cart__head">
+    <h2>Winkelwagen</h2>
+    <button class="icon-btn" data-cart-close aria-label="Winkelwagen sluiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="cart__body" data-cart-items></div>
+  <div class="cart__foot" data-cart-foot hidden>
+    <div class="cart__total"><span>Subtotaal</span><strong data-cart-total>€ 0,00</strong></div>
+    <p class="cart__note">Prijzen onder voorbehoud. We bevestigen voorraad en eventuele bezorgkosten voordat u betaalt.</p>
+    <a class="btn btn--primary btn--block" href="bestellen.html">Bestelling afronden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <button class="cart__clear" data-cart-clear>Winkelwagen legen</button>
+  </div>
+</aside>
+<div class="toast" data-toast hidden role="status" aria-live="polite"></div>
+
+<script>window.PN_I18N = {"added": "{qty}× {name} toegevoegd", "removed": "{name} verwijderd", "cleared": "Winkelwagen geleegd", "thanks": "Bedankt! Uw winkelwagen is geleegd.", "copied": "Bestelling gekopieerd — plak hem in een bericht of e-mail.", "copy_prompt": "Kopieer uw bestelling:", "empty_title": "Uw winkelwagen is leeg.", "empty_body": "Voeg producten toe vanuit het assortiment.", "empty_cta": "Naar het assortiment", "ask": "op aanvraag", "one_ask": "Eén product heeft nog geen prijs op de site — die bevestigen we in ons antwoord.", "more_ask": "{count} producten hebben nog geen prijs op de site — die bevestigen we in ons antwoord.", "err_name": "Vul uw naam in.", "err_phone": "We hebben een telefoonnummer nodig om de bestelling te bevestigen.", "err_phone_short": "Dit lijkt geen volledig telefoonnummer.", "err_email": "Controleer het e-mailadres.", "err_street": "Vul straat en huisnummer in.", "err_zip": "Vul uw postcode in.", "err_city": "Vul uw plaats in.", "qty_less": "Eén minder", "qty_more": "Eén meer", "remove": "{name} verwijderen", "order_intro": "Hallo Pet Needs, ik wil graag het volgende bestellen:", "order_subtotal": "Subtotaal", "order_excl": "(excl. producten op aanvraag)", "order_name": "Naam", "order_phone": "Telefoon", "order_email": "E-mail", "order_delivery": "Bezorgen", "order_day": "Voorkeursdag", "order_pickup": "Ophalen in de winkel", "order_note": "Opmerking", "ask_price": "prijs op aanvraag", "base": "", "lang": "nl", "shopUrl": "assortiment.html"};</script>
+<script src="assets/js/site.js?v=0e3d6986" defer></script>
+<script src="assets/js/cart.js?v=0e3d6986" defer></script>
+</body>
+</html>
