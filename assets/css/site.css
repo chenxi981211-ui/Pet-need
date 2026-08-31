@@ -786,7 +786,7 @@ body.cart-open .cart { transform: translateX(0); }
 }
 
 
-/* --- 5.29 Category tiles (wayfinding, bewust anders dan productkaarten) --- */
+/* --- 5.29 Category tiles (wayfinding: pastel kader om de foto, geen overlay) --- */
 .cat-grid { display: grid; gap: var(--gap); grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (min-width: 900px) {
   .cat-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -794,59 +794,71 @@ body.cart-open .cart { transform: translateX(0); }
 }
 
 .cat-tile {
-  position: relative; display: block; overflow: hidden;
-  border-radius: var(--r-lg); aspect-ratio: 4 / 3; background: var(--forest-deep);
+  position: relative; display: flex; flex-direction: column; gap: .8rem;
+  padding: .7rem .7rem .3rem; border-radius: var(--r-lg); overflow: hidden;
+  background: var(--tint-mint); color: var(--ink); aspect-ratio: 4 / 3;
   transition: transform var(--base) var(--ease), box-shadow var(--base) var(--ease);
 }
-.cat-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.cat-tile img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+.cat-tile:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+
+.cat-tile__frame {
+  position: relative; flex: 1; min-height: 0; overflow: hidden;
+  border-radius: calc(var(--r-lg) - .55rem); background: rgba(255, 255, 255, .55);
+}
+.cat-tile__frame img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform var(--slow) var(--ease);
 }
-.cat-tile:hover img { transform: scale(1.07); }
-.cat-tile::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(14, 59, 41, .06) 0%, rgba(14, 59, 41, .12) 38%,
-                    rgba(14, 59, 41, .62) 74%, rgba(14, 59, 41, .93) 100%);
+.cat-tile:hover .cat-tile__frame img { transform: scale(1.06); }
+
+.cat-tile__label {
+  display: flex; align-items: center; justify-content: space-between; gap: .6rem;
+  padding: 0 .45rem .85rem;
 }
-.cat-tile__label { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 1rem 1.1rem; color: #fff; }
 .cat-tile__title {
-  font-family: var(--font-display); font-weight: 600; font-size: var(--step-1);
-  line-height: 1.15; margin: 0; text-shadow: 0 1px 10px rgba(14, 59, 41, .6);
+  font-family: var(--font-display); font-weight: 600; font-size: var(--step-0);
+  line-height: 1.2; margin: 0;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.cat-tile__count { display: block; font-size: var(--step--1); color: #d6e7dc; margin-top: .15rem; text-shadow: 0 1px 8px rgba(14, 59, 41, .5); }
+.cat-tile__count { display: block; font-size: .78rem; color: var(--ink-soft); margin-top: .1rem; font-weight: 600; }
 .cat-tile__arrow {
-  position: absolute; top: .85rem; right: .85rem; z-index: 2;
-  width: 38px; height: 38px; border-radius: 50%; background: rgba(255, 255, 255, .92); color: var(--forest);
-  display: grid; place-items: center; opacity: 0; transform: translate(-4px, 4px);
-  transition: opacity var(--base) var(--ease), transform var(--base) var(--ease);
+  width: 30px; height: 30px; flex: none; border-radius: 50%;
+  background: rgba(255, 255, 255, .8); color: var(--forest);
+  display: grid; place-items: center;
+  transition: background-color var(--base) var(--ease), color var(--base) var(--ease), transform var(--base) var(--ease);
 }
-.cat-tile__arrow svg { width: 19px; height: 19px; }
-.cat-tile:hover .cat-tile__arrow, .cat-tile:focus-visible .cat-tile__arrow { opacity: 1; transform: none; }
+.cat-tile__arrow svg { width: 17px; height: 17px; }
+.cat-tile:hover .cat-tile__arrow { background: var(--forest); color: #fff; transform: translateX(3px); }
+
 @media (min-width: 900px) {
+  .cat-tile--feature { padding: .9rem .9rem .4rem; }
   .cat-tile--feature .cat-tile__title { font-size: var(--step-2); }
-  .cat-tile--feature .cat-tile__label { padding: 1.5rem 1.6rem; }
+  .cat-tile--feature .cat-tile__count { font-size: var(--step--1); margin-top: .2rem; }
+  .cat-tile--feature .cat-tile__label { padding: 0 .6rem 1rem; }
+  .cat-tile--feature .cat-tile__arrow { width: 42px; height: 42px; }
+  .cat-tile--feature .cat-tile__arrow svg { width: 21px; height: 21px; }
 }
 @media (max-width: 620px) {
-  .cat-tile { aspect-ratio: 1; }
-  .cat-tile__title { font-size: var(--step-0); }
-  .cat-tile__label { padding: .8rem .85rem; }
+  .cat-tile { aspect-ratio: 1; padding: .55rem .55rem .25rem; }
+  .cat-tile__title { font-size: .95rem; }
+  .cat-tile__label { padding: 0 .3rem .7rem; }
+  .cat-tile__arrow { width: 26px; height: 26px; }
 }
 
-/* laatste tegel: doorstroom naar het hele assortiment */
+/* afsluitende tegel: door naar het hele assortiment */
 .cat-tile--all {
-  background: var(--forest); display: grid; place-items: center; text-align: center;
-  padding: 1.25rem; color: #fff;
+  background: var(--forest); color: #fff; display: grid; place-items: center;
+  text-align: center; padding: 1.25rem;
 }
-.cat-tile--all::after { display: none; }
-.cat-tile--all .cat-tile__title { color: #fff; text-shadow: none; }
-.cat-tile--all span.cat-tile__count { color: #bcd4c3; }
+.cat-tile--all .cat-tile__title { color: #fff; font-size: var(--step-1); }
+.cat-tile--all .cat-tile__count { color: #bcd4c3; }
 .cat-tile--all .cat-tile__pill {
-  display: inline-flex; align-items: center; gap: .4rem; margin-top: .7rem;
+  display: inline-flex; align-items: center; gap: .4rem; margin-top: .8rem;
   background: var(--sun); color: var(--ink); border-radius: var(--r-pill);
   padding: .45rem .95rem; font-family: var(--font-display); font-weight: 600; font-size: var(--step--1);
+  transition: transform var(--base) var(--ease);
 }
+.cat-tile--all:hover .cat-tile__pill { transform: translateX(3px); }
 .cat-tile--all .cat-tile__pill svg { width: 16px; height: 16px; }
 
 /* ==========================================================================
