@@ -49,78 +49,142 @@
     }
   }
 
-  /* ---------- Catalog search + category filter ---------- */
+  /* ---------- Catalog: dier-tabs, categoriechips, zoeken ---------- */
   var grid = document.querySelector("[data-catalog]");
   if (grid) {
+    var STR = window.PN_I18N || {};
     var items = Array.prototype.slice.call(grid.querySelectorAll("[data-product]"));
-    var input = document.querySelector("[data-catalog-search]");
+    var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-pet-tab]"));
     var chips = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+    var input = document.querySelector("[data-catalog-search]");
     var counter = document.querySelector("[data-count]");
+    var heading = document.querySelector("[data-catalog-title]");
     var empty = document.querySelector("[data-empty]");
-    var activeCat = "all";
-    var activePet = "all";
-    var term = "";
+    var clearBtn = document.querySelector("[data-clear-filters]");
 
-    function norm(s) {
-      return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+    var state = { pet: "all", cat: "all", term: "" };
+
+    function norm(value) {
+      return (value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function matches(el) {
+      var okPet = state.pet === "all" || (" " + el.dataset.pet + " ").indexOf(" " + state.pet + " ") !== -1;
+      var okCat = state.cat === "all" || el.dataset.category === state.cat;
+      var okTerm = !state.term || norm(el.dataset.search).indexOf(state.term) !== -1;
+      return okPet && okCat && okTerm;
+    }
+
+    function label(count) {
+      var word = count === 1 ? (STR.product_one || "product") : (STR.product_many || "producten");
+      return count + " " + word;
+    }
+
+    function syncChips() {
+      // laat alleen categorieën zien die bij het gekozen dier horen
+      chips.forEach(function (chip) {
+        var pets = chip.dataset.pets || "";
+        var relevant = state.pet === "all" || chip.dataset.filter === "all" ||
+          (" " + pets + " ").indexOf(" " + state.pet + " ") !== -1;
+        chip.classList.toggle("hide", !relevant);
+        chip.setAttribute("aria-pressed", String(chip.dataset.filter === state.cat));
+      });
+      tabs.forEach(function (tab) {
+        var active = tab.dataset.petTab === state.pet;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-pressed", String(active));
+        if (active && tab.parentNode.scrollWidth > tab.parentNode.clientWidth) {
+          // op smalle schermen schuift de actieve tab in beeld
+          tab.parentNode.scrollTo({
+            left: Math.max(0, tab.offsetLeft - 16),
+            behavior: "smooth",
+          });
+        }
+      });
+    }
+
+    function syncUrl() {
+      if (!window.history || !history.replaceState) return;
+      var params = new URLSearchParams();
+      if (state.pet !== "all") params.set("dier", state.pet);
+      if (state.cat !== "all") params.set("categorie", state.cat);
+      var query = params.toString();
+      history.replaceState(null, "", query ? "?" + query : location.pathname);
+    }
+
+    function syncHeading() {
+      if (!heading) return;
+      if (state.cat !== "all") {
+        var chip = chips.filter(function (c) { return c.dataset.filter === state.cat; })[0];
+        if (chip) heading.textContent = chip.childNodes[0].textContent.trim();
+        return;
+      }
+      var tab = tabs.filter(function (tb) { return tb.dataset.petTab === state.pet; })[0];
+      heading.textContent = tab ? tab.dataset.title : (STR.all_products || heading.textContent);
     }
 
     function apply() {
       var shown = 0;
       items.forEach(function (el) {
-        var matchesCat = activeCat === "all" || el.dataset.category === activeCat;
-        var matchesPet = activePet === "all" || (" " + el.dataset.pet + " ").indexOf(" " + activePet + " ") !== -1;
-        var matchesTerm = !term || norm(el.dataset.search).indexOf(term) !== -1;
-        var visible = matchesCat && matchesPet && matchesTerm;
+        var visible = matches(el);
         el.classList.toggle("hide", !visible);
         if (visible) shown++;
       });
-      if (counter) {
-        var words = window.PN_I18N || {};
-        counter.textContent = shown + " " + (shown === 1
-          ? (words.product_one || "product")
-          : (words.product_many || "producten"));
-      }
+      if (counter) counter.textContent = label(shown);
       if (empty) empty.classList.toggle("hide", shown !== 0);
+      if (clearBtn) {
+        var filtering = state.pet !== "all" || state.cat !== "all" || state.term !== "";
+        clearBtn.classList.toggle("hide", !filtering);
+      }
+      syncChips();
+      syncHeading();
     }
 
-    if (input) {
-      input.addEventListener("input", function () {
-        term = norm(input.value.trim());
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        state.pet = tab.dataset.petTab;
+        // categorie loslaten als die niet bij het gekozen dier hoort
+        var chip = chips.filter(function (c) { return c.dataset.filter === state.cat; })[0];
+        if (chip && state.pet !== "all" &&
+            (" " + (chip.dataset.pets || "") + " ").indexOf(" " + state.pet + " ") === -1) {
+          state.cat = "all";
+        }
         apply();
-      });
-    }
-
-    chips.forEach(function (chip) {
-      chip.addEventListener("click", function () {
-        activeCat = chip.dataset.filter;
-        activePet = "all";
-        chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
-        if (heading) heading.textContent = chip.dataset.filter === "all" ? "Het hele assortiment" : chip.textContent;
-        apply();
+        syncUrl();
       });
     });
 
-    // Deep links: ?categorie=<slug> (category chip) and ?dier=<hond|kat|knaagdier|vogel>
-    var params = new URLSearchParams(window.location.search);
-    var catParam = params.get("categorie");
-    var petParam = params.get("dier");
-    var heading = document.querySelector("[data-catalog-title]");
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        state.cat = chip.dataset.filter;
+        apply();
+        syncUrl();
+      });
+    });
 
-    if (catParam) {
-      var match = chips.filter(function (c) { return c.dataset.filter === catParam; })[0];
-      if (match) match.click();
-      else apply();
-    } else if (petParam) {
-      activePet = petParam;
-      if (heading) {
-        var labels = { hond: "Voor de hond", kat: "Voor de kat", knaagdier: "Voor knaagdieren", vogel: "Voor vogels" };
-        heading.textContent = labels[petParam] || heading.textContent;
-      }
-      apply();
-    } else {
-      apply();
+    if (input) {
+      input.addEventListener("input", function () {
+        state.term = norm(input.value.trim());
+        apply();
+      });
     }
+
+    if (clearBtn) {
+      clearBtn.addEventListener("click", function () {
+        state = { pet: "all", cat: "all", term: "" };
+        if (input) input.value = "";
+        apply();
+        syncUrl();
+      });
+    }
+
+    // beginstand uit de URL: ?dier=hond en/of ?categorie=slug
+    var params = new URLSearchParams(window.location.search);
+    var petParam = params.get("dier");
+    var catParam = params.get("categorie");
+    if (petParam && tabs.some(function (tb) { return tb.dataset.petTab === petParam; })) state.pet = petParam;
+    if (catParam && chips.some(function (c) { return c.dataset.filter === catParam; })) state.cat = catParam;
+    apply();
   }
 
   /* ---------- Header shadow on scroll ---------- */

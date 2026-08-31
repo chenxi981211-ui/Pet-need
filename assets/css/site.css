@@ -861,6 +861,49 @@ body.cart-open .cart { transform: translateX(0); }
 .cat-tile--all:hover .cat-tile__pill { transform: translateX(3px); }
 .cat-tile--all .cat-tile__pill svg { width: 16px; height: 16px; }
 
+
+/* --- 5.30 Shop filters: dier-tabs, chips met aantallen ------------------- */
+.filters { margin-bottom: clamp(1.5rem, 3vw, 2.25rem); display: grid; gap: 1rem; }
+.filters__row { display: flex; flex-wrap: wrap; gap: .85rem; align-items: center; justify-content: space-between; }
+
+.tabs {
+  display: flex; flex-wrap: wrap; gap: .35rem; padding: .35rem;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-pill);
+  width: fit-content; max-width: 100%;
+}
+.tab {
+  display: inline-flex; align-items: center; gap: .45rem; cursor: pointer;
+  border: 0; background: transparent; color: var(--ink-soft);
+  border-radius: var(--r-pill); padding: .55rem 1.05rem;
+  font-family: var(--font-display); font-weight: 600; font-size: var(--step-0);
+  transition: background-color var(--fast) var(--ease), color var(--fast) var(--ease);
+}
+.tab:hover { background: var(--forest-soft); color: var(--forest); }
+.tab.is-active { background: var(--forest); color: #fff; }
+.tab__count {
+  font-family: var(--font-body); font-weight: 700; font-size: .72rem;
+  background: var(--sand); color: var(--ink-soft); border-radius: var(--r-pill); padding: .1rem .45rem;
+}
+.tab.is-active .tab__count { background: rgba(255, 255, 255, .2); color: #fff; }
+
+.chip__count { margin-left: .4rem; font-size: .72rem; color: var(--ink-mute); font-weight: 700; }
+.chip[aria-pressed="true"] .chip__count, .chip.is-active .chip__count { color: rgba(255, 255, 255, .75); }
+
+.filters__clear {
+  display: inline-flex; align-items: center; gap: .35rem; align-self: start;
+  background: none; border: 0; cursor: pointer; padding: 0;
+  font-size: var(--step--1); font-weight: 600; color: var(--carrot-dark);
+}
+.filters__clear:hover { text-decoration: underline; text-underline-offset: 3px; }
+.filters__clear svg { width: 15px; height: 15px; }
+
+@media (max-width: 620px) {
+  .tabs { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+  .tab { flex: none; }
+  .filters__row { flex-direction: column; align-items: stretch; }
+  .search { width: 100%; }
+}
+
 /* ==========================================================================
    6. UTILITIES
    ========================================================================== */
